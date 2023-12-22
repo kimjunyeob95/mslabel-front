@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mslabel-front:
+    build:
+      context: ./
+      target: runner
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - .:/var/www/mslabel-front # 마운트 전체 소스 코드
+      - /var/www/mslabel-front/node_modules
+    command: npm run dev
+    ports:
+      - "8091:3000"
+    environment:
+      - NODE_ENV=development
