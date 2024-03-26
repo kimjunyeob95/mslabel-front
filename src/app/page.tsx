@@ -1,9 +1,10 @@
-import Image from 'next/image'
-import styles from './page.module.css' // CSS 모듈을 임포트합니다.
+import Image from "next/image";
+import styles from "./page.module.css"; // CSS 모듈을 임포트합니다.
 
 export default function Home() {
   return (
-    <div className={styles.container}> {/* 컨테이너 스타일 적용 */}
+    <div className="maincontainer">
+      {/* 컨테이너 스타일 적용 */}
       <Image
         src="/renewal_img.jpeg"
         alt="리뉴얼 이미지"
@@ -13,5 +14,5 @@ export default function Home() {
         className={styles.image} // 이미지 스타일 적용
       />
     </div>
-  )
+  );
 }

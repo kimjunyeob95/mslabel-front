@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .maincontainer {
+    @apply flex flex-col items-center justify-center w-full;
+  }
+
+  .flexcenter {
+    @apply flex items-center justify-center w-full;
+  }
+
+  .margincenter {
+    @apply mx-auto my-0 w-full;
+  }
+}
