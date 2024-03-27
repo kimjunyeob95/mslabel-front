@@ -4,11 +4,15 @@
 
 @layer components {
   .maincontainer {
-    @apply flex flex-col items-center justify-center w-full;
+    @apply flex flex-col items-center justify-center w-full max-w-[1920px] min-h-full;
   }
 
   .flexcenter {
     @apply flex items-center justify-center w-full;
+  }
+
+  .flexspacebetween {
+    @apply flex items-center justify-between w-full;
   }
 
   .margincenter {
