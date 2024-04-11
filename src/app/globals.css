@@ -1,0 +1,42 @@
+html,
+body {
+  width: 100%;
+  font-size: 14px;
+  color: black;
+  word-break: normal;
+  word-wrap: break-word;
+}
+
+p,
+label {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// 현대 유저 친화 위함 reset
+button {
+  cursor: pointer;
+
+  :disabled {
+    cursor: not-allowed;
+  }
+}
+
+* {
+  outline: none;
+  font-family: inherit;
+}
+
+input:disabled {
+  -webkit-text-fill-color: currentColor;
+  opacity: 1;
+}
