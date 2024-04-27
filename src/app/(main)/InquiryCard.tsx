@@ -5,24 +5,42 @@ import styled from "styled-components";
 
 const Contaienr = styled.div`
   display: flex;
+  width: 413px;
+  padding: 37px 62px;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 37px 78px;
   background-color: #fff;
   border-radius: 20px;
 `;
 
-const Title = styled.div`
-  font-size: 36px;
-  font-weight: 700;
-  color: #000;
+const CardItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: -5px;
 `;
 
-const Content = styled.div`
+const Title = styled.p`
+  color: #000;
+  text-align: center;
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 53.333px;
+  letter-spacing: -0.36px;
+`;
+
+const Content = styled.span`
+  color: #414141;
+  text-align: center;
+
+  font-family: "Spoqa Han Sans Neo";
   font-size: 20px;
+  font-style: normal;
   font-weight: 400;
-  color: #383838;
+  line-height: 38px;
 `;
 
 interface InquiryCardIProps {
@@ -37,8 +55,10 @@ const InquiryCard: React.FC<InquiryCardIProps> = (props) => {
   return (
     <Contaienr>
       <Image src={icon} alt="inquiry icon" />
-      <Title>{title}</Title>
-      <Content>{content}</Content>
+      <CardItemContainer>
+        <Title>{title}</Title>
+        <Content>{content}</Content>
+      </CardItemContainer>
     </Contaienr>
   );
 };

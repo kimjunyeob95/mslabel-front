@@ -16,15 +16,23 @@ const CardItems = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 22px;
-  font-weight: 700;
   color: #000;
+
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
 `;
 
 const Description = styled.span`
-  font-size: 18px;
+  color: #414141;
+
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 16px;
+  font-style: normal;
   font-weight: 400;
-  color: #383838;
+  line-height: 24px;
 `;
 
 interface DescriptionCareIProps {

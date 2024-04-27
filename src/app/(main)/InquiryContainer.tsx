@@ -27,16 +27,23 @@ const TextContainer = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 44px;
+  font-size: 32px;
+  font-style: normal;
   font-weight: 700;
+  line-height: 42px;
+
   color: #000;
   text-align: center;
 `;
 
 const Description = styled.div`
-  font-size: 22px;
+  color: #414141;
+  text-align: center;
+
+  font-size: 20px;
+  font-style: normal;
   font-weight: 400;
-  color: #383838;
+  line-height: 38px;
 `;
 
 const InquiryItem = styled.div`

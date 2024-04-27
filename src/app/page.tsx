@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import styled from "styled-components";
+import BrandLabelContainer from "./(main)/BrandLabelContainer";
 import DescrptionContainer from "./(main)/DescriptionContainer";
 import InquiryContainer from "./(main)/InquiryContainer";
 import IntroduceContainer from "./(main)/IntroduceContainer";
@@ -22,6 +22,7 @@ export default function Home() {
         style={{ width: "1920px", height: "560px", backgroundColor: "#d9d9d9" }}
       />
       <DescrptionContainer />
+      <BrandLabelContainer />
       <InquiryContainer />
       <IntroduceContainer />
 

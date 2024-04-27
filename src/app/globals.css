@@ -1,10 +1,11 @@
 html,
 body {
-  width: 100%;
+  max-width: 1920px;
   font-size: 14px;
   color: black;
   word-break: normal;
   word-wrap: break-word;
+  font-family: "Spoqa Han Sans Neo";
 }
 
 p,

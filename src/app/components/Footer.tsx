@@ -25,7 +25,7 @@ const InformationContents = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1372px;
+  max-width: 1278px;
 `;
 
 const InformationContentItem = styled.div`
@@ -34,8 +34,11 @@ const InformationContentItem = styled.div`
   gap: 21px;
 
   span {
+    color: #414141;
     font-size: 18px;
+    font-style: normal;
     font-weight: 700;
+    line-height: 21.333px;
   }
 `;
 
@@ -56,15 +59,20 @@ const InformationItem = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 16px;
-  color: #868686;
-  line-height: 33.5px;
+  font-size: 14px;
+  font-style: normal;
+
+  line-height: 38px;
+  font-feature-settings: "clig" off, "liga" off;
 
   p {
     font-weight: 500;
+    color: #868686;
   }
   span {
+    font-size: 14px;
     font-weight: 400;
+    color: #868686;
   }
 `;
 
@@ -77,10 +85,11 @@ const ContactContainer = styled.div`
 
 const InquiryButton = styled.div`
   display: flex;
-  align-items: center;
+  padding: 16px 87px;
   justify-content: center;
-  width: 280px;
-  padding: 6px 0;
+  align-items: center;
+  gap: 20px;
+
   border-radius: 8px;
   border: 1px solid #868686;
 
@@ -115,7 +124,12 @@ const Footer = () => {
         <InformationContents style={{ alignItems: "flex-end" }}>
           <InformationItemsContainer>
             <div
-              style={{ fontSize: "21px", fontWeight: "500", color: "#414141" }}
+              style={{
+                fontSize: "16px",
+                fontWeight: "500",
+                color: "#414141",
+                lineHeight: "24px",
+              }}
             >
               명성라벨
             </div>
@@ -160,17 +174,26 @@ const Footer = () => {
             </InformationContentItem>
           </InformationItemsContainer>
           <ContactContainer>
-            <InformationItem>
-              <p style={{ fontWeight: "400" }}>대표번호</p>
-              <span
-                style={{ fontSize: "30px", fontWeight: "700", color: "#000" }}
-              >
-                02-2279-1701
-              </span>
-            </InformationItem>
-            <InformationItem>
-              <span>평일 09:00 ~ 18:00</span>
-            </InformationItem>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: "1px",
+              }}
+            >
+              <InformationItem>
+                <p style={{ fontWeight: "400" }}>대표번호</p>
+                <span
+                  style={{ fontSize: "28px", fontWeight: "700", color: "#000" }}
+                >
+                  02-2279-1701
+                </span>
+              </InformationItem>
+              <InformationItem>
+                <span style={{ fontSize: "16px" }}>평일 09:00 ~ 18:00</span>
+              </InformationItem>
+            </div>
             <InquiryButton>온라인 문의하기</InquiryButton>
           </ContactContainer>
         </InformationContents>

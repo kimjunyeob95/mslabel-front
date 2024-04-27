@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import styled from "styled-components";
+import { IMAGE_NOTIFICATION_THUMBNAIL } from "../assets/image";
 import {
   ICON_DISCOUNT,
   ICON_HIGHT_QUALITY,
@@ -14,7 +15,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1372px;
+  max-width: 1278px;
 `;
 
 const DescriptionContainer = styled.div`
@@ -30,16 +31,19 @@ const CompanyNotification = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 44px;
+  gap: 41px;
   padding: 80px 0;
   width: 100%;
-  border: 1px solid red;
 `;
 
 const NotificationTitle = styled.div`
-  font-size: 44px;
-  font-weight: 700;
   color: #000;
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 53.333px;
+  letter-spacing: -0.44px;
 `;
 
 const NotificationCardContainer = styled.div`
@@ -76,21 +80,22 @@ const DescrptionContainer = () => {
         <NotificationTitle>명성은 이런 일을 합니다</NotificationTitle>
         <NotificationCardContainer>
           <NotificationCard
-            thumbnail=""
+            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
             title="브랜드 라벨"
             description="화장품, 제약, 식품, 특수라벨 등 제품용 라벨입니다.
             대량, 3도 이상, 컬러가 많을 때 추천합니다."
           />
           <NotificationCard
-            thumbnail=""
+            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
             title="단순 라벨"
-            description="바코드, 제조일자, 배달 스티커 등 단순한 라벨입니다. 소량, 1도, 2도, 컬러가 적을 때 추천합니다."
+            description="바코드, 제조일자, 배달 스티커 등 단순한 라벨입니다. 
+            소량, 1도, 2도, 컬러가 적을 때 추천합니다."
           />
           <NotificationCard
-            thumbnail=""
+            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
             title="디지털 라벨"
-            description={`뛰어난 해상도와 정교한 색상이 표현되는 라벨입니다.
-            다양한 그래픽과 효과가 많은 라벨에 추천합니다.`}
+            description="뛰어난 해상도와 정교한 색상이 표현되는 라벨입니다.
+            다양한 그래픽과 효과가 많은 라벨에 추천합니다."
           />
         </NotificationCardContainer>
       </CompanyNotification>

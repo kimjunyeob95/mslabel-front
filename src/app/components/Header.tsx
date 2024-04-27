@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
+import Link from "next/link";
 
 import Image from "next/image";
 import { MAIN_LOGO } from "../assets/svg";
@@ -11,7 +12,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1372px;
+  max-width: 1278px;
   height: 106px;
 `;
 
@@ -26,9 +27,12 @@ const ContentsItemContainer = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  font-size: 18px;
-  font-weight: 700;
   color: #414141;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21.333px;
   :hover {
     color: #3870aa;
   }
@@ -45,15 +49,18 @@ const ContentItems = styled.div`
   top: 40px;
 
   width: 112px;
-  box-shadow: 0px 35px 60px -15px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
   border-radius: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 13.3px 0px rgba(56, 112, 170, 0.3);
 `;
 
 const Text = styled.div`
-  font-size: 16px;
-  font-weight: 400;
   color: #383838;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21.333px;
 `;
 
 export const Header = () => {
@@ -61,21 +68,35 @@ export const Header = () => {
 
   return (
     <Container>
-      <Image src={MAIN_LOGO} alt="main logo" />
+      <Link href="/">
+        <Image src={MAIN_LOGO} alt="main logo" />
+      </Link>
       <HeaderContentContainer>
         {HEADER_CONTENT.map((item: HeaderContents, idx: number) => {
           return (
             <ContentsItemContainer
               key={idx}
               onMouseOver={() => setIsActiveIndex(idx)}
-              onMouseLeave={() => setIsActiveIndex(null)}
             >
-              {item.title}
+              <Link
+                href={item.route}
+                style={{
+                  color: `${
+                    location.pathname.includes(item.route)
+                      ? "#3870AA"
+                      : "#414141"
+                  }`,
+                }}
+              >
+                {item.title}
+              </Link>
               {isActiveIndex === idx && (
-                <ContentItems>
+                <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
                   {item.items.map((contentsItem, contentsIdx) => {
                     return (
-                      <Text key={contentsIdx}>{contentsItem.content}</Text>
+                      <Link href={contentsItem.link} key={contentsIdx}>
+                        <Text>{contentsItem.content}</Text>
+                      </Link>
                     );
                   })}
                 </ContentItems>

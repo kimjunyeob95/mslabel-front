@@ -1,5 +1,5 @@
 "use client";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import styled from "styled-components";
 import Footer from "./components/Footer";
 import { Header } from "./components/Header";
@@ -15,7 +15,7 @@ const AppLayout = styled.div`
   min-height: 100vh;
 `;
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
 //   title: "라벨인쇄.한국",
@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <AppLayout>
           <Header />
           {children}

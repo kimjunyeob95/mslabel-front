@@ -1,19 +1,21 @@
 export interface HeaderContents {
   title: string;
+  route: string;
   items: { content: string; link: string }[];
 }
 
 export const HEADER_CONTENT = [
   {
     title: "회사소개",
+    route: "/company-introduce",
     items: [
       {
         content: "CEO 인사말",
-        link: "",
+        link: "/company-introduce",
       },
       {
         content: "연혁",
-        link: "",
+        link: "/company-introduce/1",
       },
       {
         content: "비전",
@@ -31,6 +33,7 @@ export const HEADER_CONTENT = [
   },
   {
     title: "사업소개",
+    route: "/business-introduce",
     items: [
       {
         content: "브렌드 라벨",
@@ -48,6 +51,7 @@ export const HEADER_CONTENT = [
   },
   {
     title: "일반라벨",
+    route: "/basic-label",
     items: [
       {
         content: "업종별 라벨",
@@ -69,6 +73,7 @@ export const HEADER_CONTENT = [
   },
   {
     title: "디지털라벨",
+    route: "/digital-label",
     items: [
       {
         content: "용도별 라벨",
@@ -90,6 +95,7 @@ export const HEADER_CONTENT = [
   },
   {
     title: "견적문의",
+    route: "/estimate-inquiry",
     items: [
       {
         content: "공지사항",

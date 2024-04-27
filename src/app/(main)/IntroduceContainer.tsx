@@ -4,38 +4,54 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  width: 1920px;
+  padding: 80px 10px;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 10px;
-  width: 100%;
-  height: 400px;
   background-color: #143e7e;
 `;
 
 const Title = styled.div`
-  font-size: 44px;
-  font-weight: 700;
   color: #fff;
+
   text-align: center;
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 42px;
 `;
 
 const Description = styled.div`
-  font-size: 22px;
-  font-weight: 400;
   color: #fff;
+  text-align: center;
+
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
 `;
 
 const StartButton = styled.div`
   display: flex;
-  align-items: center;
+  padding: 4px 24px;
   justify-content: center;
-  padding: 7px 23px;
-  border-radius: 35.5px;
-  background-color: #fff;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  background: #fff;
 
-  font-size: 18px;
-  font-weight: 700;
+  text-align: center;
+  font-feature-settings: "clig" off, "liga" off;
+
+  font-family: "Spoqa Han Sans Neo";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
   color: #143e7e;
 `;
 
