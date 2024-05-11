@@ -10,10 +10,21 @@ import { HeaderContents, HEADER_CONTENT } from "../models/HeaderContents";
 const Container = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 106px;
+  background-color: #fff;
+  z-index: 11;
+`;
+
+const ContentContainer = styled.div`
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 1278px;
-  height: 106px;
 `;
 
 const HeaderContentContainer = styled.div`
@@ -68,43 +79,45 @@ export const Header = () => {
 
   return (
     <Container>
-      <Link href="/">
-        <Image src={MAIN_LOGO} alt="main logo" />
-      </Link>
-      <HeaderContentContainer>
-        {HEADER_CONTENT.map((item: HeaderContents, idx: number) => {
-          return (
-            <ContentsItemContainer
-              key={idx}
-              onMouseOver={() => setIsActiveIndex(idx)}
-            >
-              <Link
-                href={item.route}
-                style={{
-                  color: `${
-                    location.pathname.includes(item.route)
-                      ? "#3870AA"
-                      : "#414141"
-                  }`,
-                }}
+      <ContentContainer>
+        <Link href="/">
+          <Image src={MAIN_LOGO} alt="main logo" />
+        </Link>
+        <HeaderContentContainer>
+          {HEADER_CONTENT.map((item: HeaderContents, idx: number) => {
+            return (
+              <ContentsItemContainer
+                key={idx}
+                onMouseOver={() => setIsActiveIndex(idx)}
               >
-                {item.title}
-              </Link>
-              {isActiveIndex === idx && (
-                <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
-                  {item.items.map((contentsItem, contentsIdx) => {
-                    return (
-                      <Link href={contentsItem.link} key={contentsIdx}>
-                        <Text>{contentsItem.content}</Text>
-                      </Link>
-                    );
-                  })}
-                </ContentItems>
-              )}
-            </ContentsItemContainer>
-          );
-        })}
-      </HeaderContentContainer>
+                <Link
+                  href={item.route}
+                  style={{
+                    color: `${
+                      location.pathname.includes(item.route)
+                        ? "#3870AA"
+                        : "#414141"
+                    }`,
+                  }}
+                >
+                  {item.title}
+                </Link>
+                {isActiveIndex === idx && (
+                  <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
+                    {item.items.map((contentsItem, contentsIdx) => {
+                      return (
+                        <Link href={contentsItem.link} key={contentsIdx}>
+                          <Text>{contentsItem.content}</Text>
+                        </Link>
+                      );
+                    })}
+                  </ContentItems>
+                )}
+              </ContentsItemContainer>
+            );
+          })}
+        </HeaderContentContainer>
+      </ContentContainer>
     </Container>
   );
 };

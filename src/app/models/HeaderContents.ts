@@ -36,16 +36,16 @@ export const HEADER_CONTENT = [
     route: "/business-introduce",
     items: [
       {
-        content: "브렌드 라벨",
-        link: "",
+        content: "브랜드 라벨",
+        link: "/business-introduce",
       },
       {
         content: "무지 라벨",
-        link: "",
+        link: "/business-introduce",
       },
       {
         content: "디지털 라벨",
-        link: "",
+        link: "/business-introduce",
       },
     ],
   },
@@ -55,19 +55,19 @@ export const HEADER_CONTENT = [
     items: [
       {
         content: "업종별 라벨",
-        link: "",
+        link: "/basic-label/1",
       },
       {
         content: "특수 라벨",
-        link: "",
+        link: "/basic-label/2",
       },
       {
         content: "전문 라벨",
-        link: "",
+        link: "/basic-label/3",
       },
       {
         content: "원단별 라벨",
-        link: "",
+        link: "/basic-label/4",
       },
     ],
   },

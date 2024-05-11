@@ -15,6 +15,11 @@ const ICON_INQUIRY_MESSAGE = require("./icon_inquiry_message.svg");
 const ICON_INQUIRY_PHONE = require("./icon_inquiry_phone.svg");
 const ICON_INQUIRY_EMAIL = require("./icon_inquiry_email.svg");
 
+//floating
+const ICON_FLOATING_INQUIRY = require("./icon_floating_inquiry.svg");
+const ICON_FLOATING_CALL = require("./icon_floating_call.svg");
+const ICON_FLOATING_GUIDE = require("./icon_floating_guide.svg");
+
 // mock
 
 export {
@@ -31,4 +36,8 @@ export {
   ICON_INQUIRY_MESSAGE,
   ICON_INQUIRY_PHONE,
   ICON_INQUIRY_EMAIL,
+  //floating
+  ICON_FLOATING_INQUIRY,
+  ICON_FLOATING_CALL,
+  ICON_FLOATING_GUIDE,
 };
