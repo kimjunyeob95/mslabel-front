@@ -94,7 +94,7 @@ export const Header = () => {
                   href={item.route}
                   style={{
                     color: `${
-                      location.pathname.includes(item.route)
+                      window.location.pathname.includes(item.route)
                         ? "#3870AA"
                         : "#414141"
                     }`,

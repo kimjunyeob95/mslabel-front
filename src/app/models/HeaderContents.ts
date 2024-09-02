@@ -77,19 +77,15 @@ export const HEADER_CONTENT = [
     items: [
       {
         content: "용도별 라벨",
-        link: "",
+        link: "/digital-label/1",
       },
       {
         content: "형태별 라벨",
-        link: "",
+        link: "/digital-label/2",
       },
       {
         content: "원단별 라벨",
-        link: "",
-      },
-      {
-        content: "파우치 인쇄",
-        link: "",
+        link: "/digital-label/3",
       },
     ],
   },

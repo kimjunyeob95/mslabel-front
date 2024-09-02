@@ -1,5 +1,8 @@
 html,
 body {
+  padding: 0;
+  margin: 0 auto;
+
   max-width: 1920px;
   font-size: 14px;
   color: black;
@@ -23,8 +26,8 @@ a {
   text-decoration: none;
 }
 
-// 현대 유저 친화 위함 reset
 button {
+  border: none;
   cursor: pointer;
 
   :disabled {
@@ -35,9 +38,26 @@ button {
 * {
   outline: none;
   font-family: inherit;
+  box-sizing: border-box;
 }
 
 input:disabled {
   -webkit-text-fill-color: currentColor;
   opacity: 1;
+}
+
+/* ::selection {
+  background: transparent;
+} */
+
+/* 기본 포커스 스타일 제거 */
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Autofill 배경색 제거 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: black;
 }

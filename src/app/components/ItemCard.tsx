@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
@@ -42,13 +43,13 @@ const ItemCard: React.FC<ItemCardIProps> = (props) => {
   const { thumbnail, title, description } = props;
 
   return (
-    <React.Fragment>
+    <Link href="label-detail/1">
       <ThumbnailImage src={thumbnail} alt="thumbnail image" />
       <ItemCardContainer>
         <p>{title}</p>
         <span>{description}</span>
       </ItemCardContainer>
-    </React.Fragment>
+    </Link>
   );
 };
 
