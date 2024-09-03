@@ -4,8 +4,8 @@ import React from "react";
 import styled from "styled-components";
 
 const CheckBox = styled.input`
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
 
   border-radius: 16px;
   border: 1px solid #d9d9d9;

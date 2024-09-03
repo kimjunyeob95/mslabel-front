@@ -7,6 +7,8 @@ import Row from "@/app/components/Row";
 import Text from "@/app/components/Text";
 import InputForm from "../components/InputForm";
 import CheckBoxForm from "../components/CheckBoxForm";
+import DetailServiceForm from "./components/DetailServiceForm";
+import CustomButton from "@/app/components/CustomButton";
 
 const Container = styled.div`
   display: flex;
@@ -87,7 +89,14 @@ const EstimateCreatePage = () => {
             />
           </Row>
         </Column>
-        <CheckBoxForm text="라벨 인쇄" isChecked={true} />
+        <DetailServiceForm />
+        <Column>
+          <CustomButton
+            text="견적문의하기"
+            onClick={() => {}}
+            style={{ padding: "21px 0", width: "520px" }}
+          />
+        </Column>
       </Column>
     </Container>
   );

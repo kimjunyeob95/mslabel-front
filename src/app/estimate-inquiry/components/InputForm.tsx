@@ -30,13 +30,14 @@ interface InputFormIProps {
   title: string;
   placeholder: string;
   isRequired: boolean;
+  style?: React.CSSProperties;
 }
 
 const InputForm: React.FC<InputFormIProps> = (props) => {
-  const { title, placeholder, isRequired } = props;
+  const { title, placeholder, isRequired, style } = props;
 
   return (
-    <Column gap="8px" align="flex-start">
+    <Column gap="8px" align="flex-start" style={{ ...style }}>
       <Text
         color="#000"
         size="20px"
@@ -46,7 +47,7 @@ const InputForm: React.FC<InputFormIProps> = (props) => {
         {title}
         {isRequired && <span style={{ color: "#f00" }}>*</span>}
       </Text>
-      <Input placeholder={placeholder} />
+      <Input placeholder={placeholder} style={{ ...style }} />
     </Column>
   );
 };

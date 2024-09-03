@@ -57,10 +57,11 @@ interface NotificationCardIProps {
   thumbnail: string;
   title: string;
   description: string;
+  onClick: () => void;
 }
 
 const NotificationCard: React.FC<NotificationCardIProps> = (props) => {
-  const { thumbnail, title, description } = props;
+  const { thumbnail, title, description, onClick } = props;
 
   return (
     <Container>
@@ -68,7 +69,7 @@ const NotificationCard: React.FC<NotificationCardIProps> = (props) => {
       <ContentContainer>
         <Title>{title}</Title>
         <Description>{description}</Description>
-        <MoreText>자세히보기</MoreText>
+        <MoreText onClick={onClick}>자세히보기</MoreText>
       </ContentContainer>
     </Container>
   );

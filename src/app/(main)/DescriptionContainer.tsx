@@ -1,7 +1,13 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { IMAGE_NOTIFICATION_THUMBNAIL } from "../assets/image";
+
+import {
+  IMAGE_BRANDLABEL_THUMBNAIL,
+  IMAGE_DIGITALLABEL_THUMBNAIL,
+  IMAGE_SIMPLELABEL_THUMBNAIL,
+} from "../assets/image";
 import {
   ICON_DISCOUNT,
   ICON_HIGHT_QUALITY,
@@ -54,6 +60,8 @@ const NotificationCardContainer = styled.div`
 `;
 
 const DescrptionContainer = () => {
+  const router = useRouter();
+
   return (
     <Container>
       <DescriptionContainer>
@@ -80,22 +88,25 @@ const DescrptionContainer = () => {
         <NotificationTitle>명성은 이런 일을 합니다</NotificationTitle>
         <NotificationCardContainer>
           <NotificationCard
-            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
+            thumbnail={IMAGE_BRANDLABEL_THUMBNAIL}
             title="브랜드 라벨"
             description="화장품, 제약, 식품, 특수라벨 등 제품용 라벨입니다.
             대량, 3도 이상, 컬러가 많을 때 추천합니다."
+            onClick={() => router.push("/business-introduce")}
           />
           <NotificationCard
-            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
+            thumbnail={IMAGE_SIMPLELABEL_THUMBNAIL}
             title="단순 라벨"
             description="바코드, 제조일자, 배달 스티커 등 단순한 라벨입니다. 
             소량, 1도, 2도, 컬러가 적을 때 추천합니다."
+            onClick={() => router.push("/basic-label")}
           />
           <NotificationCard
-            thumbnail={IMAGE_NOTIFICATION_THUMBNAIL}
+            thumbnail={IMAGE_DIGITALLABEL_THUMBNAIL}
             title="디지털 라벨"
             description="뛰어난 해상도와 정교한 색상이 표현되는 라벨입니다.
             다양한 그래픽과 효과가 많은 라벨에 추천합니다."
+            onClick={() => router.push("/digital-label")}
           />
         </NotificationCardContainer>
       </CompanyNotification>
