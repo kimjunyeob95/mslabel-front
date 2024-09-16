@@ -1,4 +1,5 @@
 import ItemCard from "@/app/components/ItemCard";
+import { BasicLabelListType } from "@/app/util/LabelType";
 import React from "react";
 import styled from "styled-components";
 
@@ -51,7 +52,7 @@ const Description = styled.div`
 const GridContainer = styled.div`
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 44px;
   padding: 20px;
 
@@ -65,11 +66,8 @@ const GridItem = styled.div`
 `;
 
 interface BasicLabelDetailContainerIProps {
-  data: {
-    thumbnail: any;
-    title: string;
-    description: string;
-  }[];
+  basicLabelList: BasicLabelListType;
+
   title: string;
   description: string;
 }
@@ -77,7 +75,7 @@ interface BasicLabelDetailContainerIProps {
 const BasicLabelDetailContainer: React.FC<BasicLabelDetailContainerIProps> = (
   props
 ) => {
-  const { data, title, description } = props;
+  const { basicLabelList, title, description } = props;
 
   return (
     <Container>
@@ -87,17 +85,19 @@ const BasicLabelDetailContainer: React.FC<BasicLabelDetailContainerIProps> = (
         <Description>{description}</Description>
       </Column>
       <GridContainer>
-        {data.map((item, idx) => {
-          return (
-            <GridItem key={idx}>
-              <ItemCard
-                thumbnail={item.thumbnail}
-                title={item.title}
-                description={item.description}
-              />
-            </GridItem>
-          );
-        })}
+        {basicLabelList &&
+          basicLabelList.records.map((item, idx) => {
+            return (
+              <GridItem key={idx}>
+                <ItemCard
+                  thumbnail={item.main_img}
+                  title={item.title}
+                  description={item.desc}
+                  id={item.id}
+                />
+              </GridItem>
+            );
+          })}
       </GridContainer>
     </Container>
   );

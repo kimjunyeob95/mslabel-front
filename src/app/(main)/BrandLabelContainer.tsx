@@ -3,6 +3,8 @@ import styled from "styled-components";
 import {
   IMAGE_INTERIORLABEL_THUMBNAIL,
   IMAGE_MAKELABEL_THUMBNAIL,
+  IMAGE_MARKETINGLABEL_THUMBNAIL,
+  IMAGE_PRODUCTLABEL_THUMBNAIL,
 } from "../assets/image";
 import Image from "next/image";
 
@@ -60,11 +62,14 @@ const BrandLabelContainer = () => {
       <Title>브랜드 라벨 전문 명성라벨입니다</Title>
       <LabelContainer>
         <LabelContent>
-          <LabelCard src="" alt="" />
+          <LabelCard src={IMAGE_PRODUCTLABEL_THUMBNAIL} alt="제품 라벨" />
           <span>제품 라벨</span>
         </LabelContent>
         <LabelContent>
-          <LabelCard src="" alt="" />
+          <LabelCard
+            src={IMAGE_MARKETINGLABEL_THUMBNAIL}
+            alt="홍보 안내 라벨"
+          />
           <span>홍보, 안내 라벨</span>
         </LabelContent>
         <LabelContent>

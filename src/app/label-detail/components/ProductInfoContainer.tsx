@@ -1,4 +1,5 @@
 "use client";
+import { RecordsEntity } from "@/app/util/LabelType";
 import React from "react";
 import styled from "styled-components";
 
@@ -73,38 +74,39 @@ const EstimateButton = styled.div`
   cursor: pointer;
 `;
 
-const ProductInfoContainer = () => {
+interface ProductInfoContainerIProps {
+  basicLabelDetailItem: RecordsEntity;
+}
+
+const ProductInfoContainer: React.FC<ProductInfoContainerIProps> = (props) => {
+  const { basicLabelDetailItem } = props;
+
   return (
     <Container>
       <Column style={{ gap: "8px" }}>
-        <Title>화장품 라벨</Title>
+        <Title>{basicLabelDetailItem.title}</Title>
         <Description>
-          {`별도의 후가공 없이도 후가공 처리가 되어보이는 특수 라벨입니다.
-           의 후가공 없이도 후가공 처리가 되어보이는 특수 라벨입니다.`}
+          {basicLabelDetailItem.desc}
+          {/* {`별도의 후가공 없이도 후가공 처리가 되어보이는 특수 라벨입니다.
+           의 후가공 없이도 후가공 처리가 되어보이는 특수 라벨입니다.`} */}
         </Description>
       </Column>
-      <Column style={{ gap: "25px" }}>
-        <ProductInformation>
+      <ProductInformation>
+        <Column style={{ gap: "25px" }}>
           <span className="name">원단</span>
-          <span className="kind">유포지</span>
-        </ProductInformation>
-        <ProductInformation>
+          <span className="name">사이즈</span>
+          <span className="name">형태</span>
+          <span className="name">키워드</span>
           <span className="name">원단</span>
+        </Column>
+        <Column style={{ gap: "25px" }}>
+          <span className="kind">{basicLabelDetailItem.material}</span>
+          <span className="kind">{basicLabelDetailItem.size}</span>
+          <span className="kind">{basicLabelDetailItem.shape}</span>
+          <span className="kind">{basicLabelDetailItem.keywords}</span>
           <span className="kind">유포지</span>
-        </ProductInformation>
-        <ProductInformation>
-          <span className="name">원단</span>
-          <span className="kind">유포지</span>
-        </ProductInformation>
-        <ProductInformation>
-          <span className="name">원단</span>
-          <span className="kind">유포지</span>
-        </ProductInformation>
-        <ProductInformation>
-          <span className="name">원단</span>
-          <span className="kind">유포지</span>
-        </ProductInformation>
-      </Column>
+        </Column>
+      </ProductInformation>
       <EstimateButton>견적문의</EstimateButton>
     </Container>
   );

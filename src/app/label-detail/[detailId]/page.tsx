@@ -6,6 +6,7 @@ import InquiryContainer from "@/app/(main)/InquiryContainer";
 import ThumbnailContainer from "../components/ThumbnailContainer";
 import ProductInfoContainer from "../components/ProductInfoContainer";
 import EstimateContainer from "../components/EstimateContainer";
+import { useLabelDetailHooks } from "../hooks/useLabelDetailHooks";
 
 const Container = styled.div`
   display: flex;
@@ -25,12 +26,18 @@ const DetailInformationContainer = styled.div`
 `;
 
 const LabelDetailPage = () => {
+  const { basicLabelDetailItem } = useLabelDetailHooks();
+
+  console.log(basicLabelDetailItem, "<<");
+
   return (
     <Container>
-      <DetailInformationContainer>
-        <ThumbnailContainer />
-        <ProductInfoContainer />
-      </DetailInformationContainer>
+      {basicLabelDetailItem && (
+        <DetailInformationContainer>
+          <ThumbnailContainer basicLabelDetailItem={basicLabelDetailItem} />
+          <ProductInfoContainer basicLabelDetailItem={basicLabelDetailItem} />
+        </DetailInformationContainer>
+      )}
       <EstimateContainer />
       <InquiryContainer />
     </Container>

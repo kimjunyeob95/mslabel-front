@@ -4,6 +4,9 @@ import styled from "styled-components";
 import InquiryContainer from "../(main)/InquiryContainer";
 import { IMAGE_NOTIFICATION_THUMBNAIL } from "../assets/image";
 import ItemSlider from "../components/ItemSlider";
+import { useSubMenuListHooks } from "../components/hooks/useSubMenuListHooks";
+import { usePathname } from "next/navigation";
+import { parse } from "query-string-for-all";
 
 const Container = styled.div`
   display: flex;
@@ -98,6 +101,11 @@ export const MOCK_DATA: {
 
 const BasicLabelPage = () => {
   const [isActivieRef, setIsActiveRef] = useState<string>("업종");
+  const { basicLabelSubMenuList, getSubBasicLabelList } = useSubMenuListHooks();
+
+  const { group_id } = parse(window.location.search);
+
+  console.log(basicLabelSubMenuList, "<<df");
   const firstTabRef = useRef<HTMLDivElement>(null);
   const secondTabRef = useRef<HTMLDivElement>(null);
   const thirdTabRef = useRef<HTMLDivElement>(null);
@@ -122,14 +130,14 @@ const BasicLabelPage = () => {
       scrollPosition >= firstTabRef.current.offsetTop &&
       scrollPosition < secondTabRef.current.offsetTop
     ) {
-      setIsActiveRef("업종");
+      setIsActiveRef("업종별 라벨");
     } else if (
       secondTabRef.current &&
       thirdTabRef.current &&
       scrollPosition >= secondTabRef.current.offsetTop &&
       scrollPosition < thirdTabRef.current.offsetTop
     ) {
-      setIsActiveRef("특수");
+      setIsActiveRef("특수 라벨");
     } else if (
       thirdTabRef.current &&
       fourthTabRef.current &&
@@ -161,66 +169,45 @@ const BasicLabelPage = () => {
     return () => window.removeEventListener("scroll", handleOnScroll);
   }, []);
 
+  useEffect(() => {
+    if (group_id) {
+      getSubBasicLabelList(Number(group_id));
+    }
+  }, [group_id]);
+
   return (
     <Container>
       <ImageContainer />
       <RefContainer>
-        <RefItem
-          $isActivie={isActivieRef === "업종"}
-          onClick={() => {
-            handleOnScrollToRef(firstTabRef, "업종");
-          }}
-        >
-          업종
-        </RefItem>
-        <RefItem
-          $isActivie={isActivieRef === "특수"}
-          onClick={() => {
-            handleOnScrollToRef(secondTabRef, "특수");
-          }}
-        >
-          특수
-        </RefItem>
-        <RefItem
-          $isActivie={isActivieRef === "전문"}
-          onClick={() => {
-            handleOnScrollToRef(thirdTabRef, "전문");
-          }}
-        >
-          전문
-        </RefItem>
-        <RefItem
-          $isActivie={isActivieRef === "단순"}
-          onClick={() => {
-            handleOnScrollToRef(fourthTabRef, "단순");
-          }}
-        >
-          단순
-        </RefItem>
-        <RefItem
-          $isActivie={isActivieRef === "형태"}
-          onClick={() => {
-            handleOnScrollToRef(fifthTabRef, "형태");
-          }}
-        >
-          형태
-        </RefItem>
+        {basicLabelSubMenuList?.result.map((item, idx) => {
+          return (
+            <RefItem
+              key={idx}
+              $isActivie={isActivieRef === item.sub_title}
+              onClick={() => {
+                handleOnScrollToRef(firstTabRef, item.sub_title);
+              }}
+            >
+              {item.sub_title}
+            </RefItem>
+          );
+        })}
       </RefContainer>
       <div ref={firstTabRef} />
       <ItemSlider
         title="업종별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}
-        link="basic-label/1"
+        link="basic-label/9"
       />
       <div ref={secondTabRef} />
       <ItemSlider
         title="특수 라벨입니다"
-        description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
+        description="제품의 독특한 특성과 기능성을 부각시키는 라벨로, 특정 용도에 맞춘 다양한 기술과 재질이 활용되는 라벨입니다."
         items={MOCK_DATA}
         link="basic-label/2"
       />
-      <div ref={thirdTabRef} />
+      {/* <div ref={thirdTabRef} />
       <ItemSlider
         title="전문 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
@@ -240,7 +227,7 @@ const BasicLabelPage = () => {
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}
         link="basic-label/4"
-      />
+      /> */}
       <InquiryContainer />
     </Container>
   );

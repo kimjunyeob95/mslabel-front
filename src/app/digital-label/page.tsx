@@ -122,7 +122,7 @@ const DigitalLabelPage = () => {
         >
           용도
         </RefItem>
-        <RefItem
+        {/* <RefItem
           $isActivie={isActivieRef === "형태"}
           onClick={() => {
             handleOnScrollToRef(secondTabRef, "형태");
@@ -145,7 +145,7 @@ const DigitalLabelPage = () => {
           }}
         >
           파우치
-        </RefItem>
+        </RefItem> */}
       </RefContainer>
       <div ref={firstTabRef} />
       <ItemSlider
@@ -154,7 +154,7 @@ const DigitalLabelPage = () => {
         items={MOCK_DATA}
         link="digital-label/1"
       />
-      <div ref={secondTabRef} />
+      {/* <div ref={secondTabRef} />
       <ItemSlider
         title="형태별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
@@ -174,7 +174,7 @@ const DigitalLabelPage = () => {
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}
         link="digital-label"
-      />
+      /> */}
       <InquiryContainer />
     </Container>
   );

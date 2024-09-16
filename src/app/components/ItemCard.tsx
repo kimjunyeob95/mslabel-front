@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import Link from "next/link";
 
 const ItemCardContainer = styled.div`
   display: flex;
@@ -29,22 +29,30 @@ const ItemCardContainer = styled.div`
 `;
 
 const ThumbnailImage = styled(Image)`
-  width: 400px;
-  height: 400px;
+  width: 380px;
+  height: 380px;
 `;
 
 interface ItemCardIProps {
   thumbnail: any;
   title: string;
   description: string;
+  id: number;
 }
 
 const ItemCard: React.FC<ItemCardIProps> = (props) => {
-  const { thumbnail, title, description } = props;
+  const { thumbnail, title, description, id } = props;
 
   return (
-    <Link href="label-detail/1">
-      <ThumbnailImage src={thumbnail} alt="thumbnail image" />
+    <Link href={`/label-detail/${id}`}>
+      {thumbnail && (
+        <ThumbnailImage
+          src={thumbnail}
+          alt="thumbnail image"
+          width={380}
+          height={380}
+        />
+      )}
       <ItemCardContainer>
         <p>{title}</p>
         <span>{description}</span>

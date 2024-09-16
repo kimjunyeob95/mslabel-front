@@ -1,11 +1,13 @@
 "use client";
 import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+
 import styled from "styled-components";
 import Link from "next/link";
 
 import Image from "next/image";
 import { MAIN_LOGO } from "../assets/svg";
-import { HeaderContents, HEADER_CONTENT } from "../models/HeaderContents";
+import { useHeaderHooks } from "./hooks/useHeaderHooks";
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +46,7 @@ const ContentsItemContainer = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: 21.333px;
-  :hover {
+  &:hover {
     color: #3870aa;
   }
   cursor: pointer;
@@ -75,7 +77,14 @@ const Text = styled.div`
 `;
 
 export const Header = () => {
+  const pathname = usePathname();
   const [isActiveIndex, setIsActiveIndex] = useState<number | null>(null);
+  const {
+    headerItem,
+    handelOnClickHeaderItem,
+    handleGetUrl,
+    handleNavigatePage,
+  } = useHeaderHooks();
 
   return (
     <Container>
@@ -84,7 +93,46 @@ export const Header = () => {
           <Image src={MAIN_LOGO} alt="main logo" />
         </Link>
         <HeaderContentContainer>
-          {HEADER_CONTENT.map((item: HeaderContents, idx: number) => {
+          {headerItem?.map((item, idx) => {
+            return (
+              <ContentsItemContainer
+                key={idx}
+                onMouseOver={() => setIsActiveIndex(item.id)}
+              >
+                <div
+                  onClick={() => {
+                    handleNavigatePage(item.id);
+                  }}
+                  style={{
+                    color: `${
+                      pathname.includes(handleGetUrl(item.id))
+                        ? "#3870AA"
+                        : "#414141"
+                    }`,
+                  }}
+                >
+                  {item.title}
+                </div>
+                {isActiveIndex === idx + 1 && (
+                  <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
+                    {item.sub_menus?.map((subMenuItem, subMenuIdx) => {
+                      return (
+                        <Link
+                          href={`${handleGetUrl(item.id)}?group_id=${
+                            item.id
+                          }&sub_id=${subMenuItem.id}`}
+                          key={subMenuIdx}
+                        >
+                          <Text>{subMenuItem.title}</Text>
+                        </Link>
+                      );
+                    })}
+                  </ContentItems>
+                )}
+              </ContentsItemContainer>
+            );
+          })}
+          {/* {HEADER_CONTENT.map((item: HeaderContents, idx: number) => {
             return (
               <ContentsItemContainer
                 key={idx}
@@ -115,7 +163,7 @@ export const Header = () => {
                 )}
               </ContentsItemContainer>
             );
-          })}
+          })} */}
         </HeaderContentContainer>
       </ContentContainer>
     </Container>
