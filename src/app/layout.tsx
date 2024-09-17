@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Footer from "./components/Footer";
 import { Header } from "./components/Header";
 import "./globals.css";
+import { instance } from "./util/instance";
+import { useEffect } from "react";
 
 const AppLayout = styled.div`
   display: flex;
@@ -27,6 +29,25 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const handleLogin = async () => {
+    try {
+      const response = await instance.post("token/create", {
+        user_id: "tester123",
+        password: "1234",
+      });
+
+      if (response) {
+        localStorage.setItem("token", `Bearer ${response.data.token}`);
+      }
+    } catch (error) {
+      console.log(error, "login error");
+    }
+  };
+
+  useEffect(() => {
+    handleLogin();
+  }, []);
+
   return (
     <html lang="en">
       <body>

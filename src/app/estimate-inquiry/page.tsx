@@ -1,11 +1,15 @@
 "use client";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
+
 import Row from "../components/Row";
 import Text from "../components/Text";
 import Column from "../components/Column";
 import EstimateList from "./components/EstimateList";
 import NoticeList from "./components/NoticeList";
+import CustomButton from "../components/CustomButton";
+import { useEstimateListHooks } from "./hooks/useEstimateListHooks";
 
 const Container = styled.div`
   display: flex;
@@ -48,6 +52,9 @@ const RefItem = styled.div<{ $isActivie: boolean }>`
 `;
 
 const EstimateInquiryPage = () => {
+  const router = useRouter();
+
+  const { estimateList } = useEstimateListHooks();
   const [isActivieRef, setIsActiveRef] = useState<string>("견적문의");
 
   const handleSetIsActiveRef = (activeRef: string) => {
@@ -83,7 +90,25 @@ const EstimateInquiryPage = () => {
           공지사항
         </RefItem>
       </RefContainer>
-      {isActivieRef === "견적문의" ? <EstimateList /> : <NoticeList />}
+      <Row
+        justifyContent="flex-end"
+        style={{ width: "100%", maxWidth: "1278px", margin: "0 auto" }}
+      >
+        <CustomButton
+          text="견적문의하기"
+          onClick={() => {
+            router.push("/estimate-inquiry/create");
+          }}
+          style={{ width: "160px" }}
+        />
+      </Row>
+      {isActivieRef === "견적문의" ? (
+        <React.Fragment>
+          {estimateList && <EstimateList estimateList={estimateList} />}
+        </React.Fragment>
+      ) : (
+        <NoticeList />
+      )}
     </Container>
   );
 };

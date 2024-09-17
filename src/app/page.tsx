@@ -18,27 +18,6 @@ const AppLayout = styled.div`
 `;
 
 export default function Home() {
-  const handleLogin = async () => {
-    try {
-      const response = await instance.post("token/create", {
-        user_id: "tester123",
-        password: "1234",
-      });
-
-      if (response) {
-        localStorage.setItem("token", `Bearer ${response.data.token}`);
-
-        console.log(response);
-      }
-    } catch (error) {
-      console.log(error, "login error");
-    }
-  };
-
-  useEffect(() => {
-    handleLogin();
-  }, []);
-
   return (
     <AppLayout>
       <div

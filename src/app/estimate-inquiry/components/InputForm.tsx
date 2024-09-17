@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Column from "@/app/components/Column";
@@ -30,11 +30,32 @@ interface InputFormIProps {
   title: string;
   placeholder: string;
   isRequired: boolean;
+  value: any;
+  target: string;
+  onChange: (key: string, value: any) => void;
   style?: React.CSSProperties;
+  type?: string;
 }
 
 const InputForm: React.FC<InputFormIProps> = (props) => {
-  const { title, placeholder, isRequired, style } = props;
+  const {
+    title,
+    placeholder,
+    isRequired,
+    value,
+    target,
+    onChange,
+    style,
+    type,
+  } = props;
+
+  const [inputValue, setInputValue] = useState<string>(value);
+
+  const handleOnchangeValue = (e: any) => {
+    setInputValue(e.target.value);
+
+    onChange(target, e.target.value);
+  };
 
   return (
     <Column gap="8px" align="flex-start" style={{ ...style }}>
@@ -47,7 +68,14 @@ const InputForm: React.FC<InputFormIProps> = (props) => {
         {title}
         {isRequired && <span style={{ color: "#f00" }}>*</span>}
       </Text>
-      <Input placeholder={placeholder} style={{ ...style }} />
+      <Input
+        type={target === "password" ? "password" : "text"}
+        placeholder={placeholder}
+        style={{ ...style }}
+        value={inputValue}
+        onChange={handleOnchangeValue}
+        readOnly={type === "readOnly" ? true : false}
+      />
     </Column>
   );
 };

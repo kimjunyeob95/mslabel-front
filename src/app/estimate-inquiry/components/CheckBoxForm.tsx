@@ -13,15 +13,23 @@ const CheckBox = styled.input`
 
 interface CheckBoxFormIProps {
   text: string;
+  id?: string;
   isChecked: boolean;
+  onClick?: (id: string) => void;
 }
 
 const CheckBoxForm: React.FC<CheckBoxFormIProps> = (props) => {
-  const { text, isChecked } = props;
+  const { text, id, isChecked, onClick } = props;
 
   return (
     <Row gap="16px">
-      <CheckBox type="checkbox" checked={isChecked} />
+      <CheckBox
+        type="checkbox"
+        checked={isChecked}
+        onChange={() => {
+          onClick && onClick(id!);
+        }}
+      />
       <Text color="#414141" size="16px" weight={400}>
         {text}
       </Text>
