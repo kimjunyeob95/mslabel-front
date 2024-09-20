@@ -2,15 +2,19 @@ version: '3'
 services:
   mslabel-front:
     build:
-      context: ./
-      target: runner
+      context: .
+      target: ${BUILD_TARGET}
     restart: unless-stopped
     tty: true
     volumes:
-      - .:/var/www/mslabel-front # 마운트 전체 소스 코드
-      - /var/www/mslabel-front/node_modules
-    command: npm run dev
+      - .:/app
+      - /app/node_modules
+      - /app/.next
     ports:
-      - "8091:3000"
+      - "${PORT}:3000"
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=${NODE_ENV}
+      - PORT=3000
+    env_file:
+      - .env
+    command: sh -c "if [ \"$NODE_ENV\" = \"production\" ]; then node server.js; else npm run dev; fi"
