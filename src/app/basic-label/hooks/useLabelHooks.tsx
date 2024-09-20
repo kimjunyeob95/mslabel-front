@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { parse } from "query-string-for-all";
 
 import { ADMIN_BOARD_PRODUCT } from "@/app/util/constant";
@@ -8,6 +8,7 @@ import { BasicLabelListType, BasicLabelParams } from "@/app/util/LabelType";
 
 export const useBasicLabelHooks = () => {
   const navigate = useRouter();
+  const params = useParams<{ labelId: string }>();
   const { group_id, sub_id } = parse(window.location.search);
 
   const [basicLabelList, setBasicLabelList] = useState<BasicLabelListType>();
@@ -32,7 +33,7 @@ export const useBasicLabelHooks = () => {
   const handleGetBasicLabelList = async () => {
     try {
       const response = await instance.get(
-        `${ADMIN_BOARD_PRODUCT}?group_id=${group_id}&sub_id=${sub_id}&page=${pageSize}&page_size=10&sort=created_at|desc`
+        `${ADMIN_BOARD_PRODUCT}?group_id=${group_id}&sub_id=${params.labelId}&page=${pageSize}&page_size=10&sort=created_at|desc`
       );
 
       if (response) {

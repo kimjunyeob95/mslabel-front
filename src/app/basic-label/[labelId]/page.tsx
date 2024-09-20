@@ -17,11 +17,9 @@ const Container = styled.div`
 
 const BasicLabelDetailPage = () => {
   const params = useParams<{ labelId: string }>();
-  const { sub_id } = parse(window.location.search);
+  const { group_id, sub_id } = parse(window.location.search);
 
   const { basicLabelList } = useBasicLabelHooks();
-
-  console.log(basicLabelList, "<<");
 
   const renderBasicLabelDetail = () => {
     switch (sub_id) {

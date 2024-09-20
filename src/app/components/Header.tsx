@@ -102,6 +102,7 @@ export const Header = () => {
                 <div
                   onClick={() => {
                     handleNavigatePage(item.id);
+                    setIsActiveIndex(null);
                   }}
                   style={{
                     color: `${
@@ -118,9 +119,9 @@ export const Header = () => {
                     {item.sub_menus?.map((subMenuItem, subMenuIdx) => {
                       return (
                         <Link
-                          href={`${handleGetUrl(item.id)}?group_id=${
-                            item.id
-                          }&sub_id=${subMenuItem.id}`}
+                          href={`${handleGetUrl(item.id)}/${
+                            subMenuItem.id
+                          }?group_id=${item.id}&sub_id=${subMenuItem.id}`}
                           key={subMenuIdx}
                         >
                           <Text>{subMenuItem.title}</Text>

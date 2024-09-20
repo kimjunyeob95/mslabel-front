@@ -40,12 +40,13 @@ export default function RootLayout({
         localStorage.setItem("token", `Bearer ${response.data.token}`);
       }
     } catch (error) {
+      localStorage.removeItem("token");
       console.log(error, "login error");
     }
   };
 
   useEffect(() => {
-    handleLogin();
+    if (localStorage.getItem("token") === null) handleLogin();
   }, []);
 
   return (

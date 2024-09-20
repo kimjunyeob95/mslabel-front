@@ -49,8 +49,6 @@ const Description = styled.div`
 `;
 
 const SlideContainer = styled(Swiper)`
-  border: 1px solid red;
-
   .swiper-wrapper {
     display: flex;
     justify-content: flex-start;
@@ -151,6 +149,7 @@ const ItemSlider: React.FC<ItemSliderIProps> = (props) => {
           return (
             <SwiperSlide key={idx}>
               <ItemCard
+                id={idx}
                 thumbnail={item.thumbnail}
                 title={item.title}
                 description={item.description}

@@ -4,8 +4,11 @@ import BrandLabelContainer from "./(main)/BrandLabelContainer";
 import DescrptionContainer from "./(main)/DescriptionContainer";
 import InquiryContainer from "./(main)/InquiryContainer";
 import IntroduceContainer from "./(main)/IntroduceContainer";
-import { instance } from "./util/instance";
-import { useEffect } from "react";
+import Image from "next/image";
+import {
+  IMAGE_BANNER_THUMBNAIL,
+  IMAGE_BRANDLABEL_THUMBNAIL,
+} from "./assets/image";
 
 const AppLayout = styled.div`
   display: flex;
@@ -20,8 +23,11 @@ const AppLayout = styled.div`
 export default function Home() {
   return (
     <AppLayout>
-      <div
-        style={{ width: "1920px", height: "560px", backgroundColor: "#d9d9d9" }}
+      <Image
+        src={IMAGE_BANNER_THUMBNAIL}
+        alt="thumbnail"
+        width={1920}
+        height={560}
       />
       <DescrptionContainer />
       <BrandLabelContainer />

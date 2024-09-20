@@ -28,8 +28,6 @@ const DetailInformationContainer = styled.div`
 const LabelDetailPage = () => {
   const { basicLabelDetailItem } = useLabelDetailHooks();
 
-  console.log(basicLabelDetailItem, "<<");
-
   return (
     <Container>
       {basicLabelDetailItem && (
