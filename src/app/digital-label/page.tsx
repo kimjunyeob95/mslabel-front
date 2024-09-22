@@ -4,6 +4,8 @@ import styled from "styled-components";
 import InquiryContainer from "../(main)/InquiryContainer";
 import { MOCK_DATA } from "../basic-label/page";
 import ItemSlider from "../components/ItemSlider";
+import Column from "../components/Column";
+import Text from "../components/Text";
 
 const Container = styled.div`
   display: flex;
@@ -46,15 +48,16 @@ const RefItem = styled.div<{ $isActivie: boolean }>`
 
 const ImageContainer = styled.div`
   display: flex;
-  padding: 140px 102px;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 24px;
-  background-color: #ececec;
+  height: 320px;
+  background: var(--Background-Skyblue, #eff5ff);
 `;
 
 const DigitalLabelPage = () => {
-  const [isActivieRef, setIsActiveRef] = useState<string>("용도");
+  const [isActivieRef, setIsActiveRef] = useState<string>("용도별 라벨");
   const firstTabRef = useRef<HTMLDivElement>(null);
   const secondTabRef = useRef<HTMLDivElement>(null);
   const thirdTabRef = useRef<HTMLDivElement>(null);
@@ -78,7 +81,7 @@ const DigitalLabelPage = () => {
       scrollPosition >= firstTabRef.current.offsetTop &&
       scrollPosition < secondTabRef.current.offsetTop
     ) {
-      setIsActiveRef("용도");
+      setIsActiveRef("용도별 라벨");
     } else if (
       secondTabRef.current &&
       thirdTabRef.current &&
@@ -112,15 +115,31 @@ const DigitalLabelPage = () => {
 
   return (
     <Container>
-      <ImageContainer />
+      <ImageContainer>
+        <Column gap="24px">
+          <Text color="#2a486d" size="32px" weight={700}>
+            디지털 인쇄
+          </Text>
+          <Text
+            color="#414141"
+            size="20px"
+            style={{ lineHeight: "32px", textAlign: "center" }}
+          >
+            디지털 인쇄 기기로 제작하는 라벨입니다.
+            <br />
+            다양한 색상과 풍부한 그래픽, 많은 효과를 지원하여, 인쇄 품질을 한층
+            더 높일 수 있습니다.
+          </Text>
+        </Column>
+      </ImageContainer>
       <RefContainer>
         <RefItem
-          $isActivie={isActivieRef === "용도"}
+          $isActivie={isActivieRef === "용도별 라벨"}
           onClick={() => {
-            handleOnScrollToRef(firstTabRef, "용도");
+            handleOnScrollToRef(firstTabRef, "용도별 라벨");
           }}
         >
-          용도
+          용도별 라벨
         </RefItem>
         {/* <RefItem
           $isActivie={isActivieRef === "형태"}
@@ -154,8 +173,8 @@ const DigitalLabelPage = () => {
         items={MOCK_DATA}
         link="digital-label/1"
       />
-      {/* <div ref={secondTabRef} />
-      <ItemSlider
+      <div ref={secondTabRef} />
+      {/* <ItemSlider
         title="형태별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}

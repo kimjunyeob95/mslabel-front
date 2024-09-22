@@ -79,7 +79,6 @@ const BasicLabelDetailContainer: React.FC<BasicLabelDetailContainerIProps> = (
 
   return (
     <Container>
-      <ImageContainer />
       <Column>
         <Title>{title}</Title>
         <Description>{description}</Description>

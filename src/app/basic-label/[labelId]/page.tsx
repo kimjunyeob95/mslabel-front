@@ -3,16 +3,27 @@ import React from "react";
 import { useParams } from "next/navigation";
 import styled from "styled-components";
 import InquiryContainer from "@/app/(main)/InquiryContainer";
-import { MOCK_DATA } from "../page";
 import BasicLabelDetailContainer from "../components/BasicLabelDetailContainer";
 import { useBasicLabelHooks } from "../hooks/useLabelHooks";
 import { parse } from "query-string-for-all";
+import Column from "@/app/components/Column";
+import Text from "@/app/components/Text";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 80px;
   width: 100%;
+`;
+
+const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 320px;
+  background: var(--Background-Skyblue, #eff5ff);
 `;
 
 const BasicLabelDetailPage = () => {
@@ -47,6 +58,23 @@ const BasicLabelDetailPage = () => {
 
   return (
     <Container>
+      <ImageContainer>
+        <Column gap="24px">
+          <Text color="#2a486d" size="32px" weight={700}>
+            일반 라벨
+          </Text>
+          <Text
+            color="#414141"
+            size="20px"
+            style={{ lineHeight: "32px", textAlign: "center" }}
+          >
+            프레스(1,2도)와 로타리(3도 이상) 기기로 제작하는 라벨입니다.
+            <br />
+            다품종 대량생산을 통해 비용 효율성을 극대화하며, 고객의 브랜드
+            가치를 높이는 효과적인 라벨 솔루션입니다.
+          </Text>
+        </Column>
+      </ImageContainer>
       {/* {basicLabelList && (
         <BasicLabelDetailContainer
           basicLabelList={basicLabelList}

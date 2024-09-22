@@ -47,11 +47,18 @@ export default function RootLayout({
 
   useEffect(() => {
     if (localStorage.getItem("token") === null) handleLogin();
+
+    handleLogin();
   }, []);
 
   return (
     <html lang="en">
       <body>
+        <link
+          href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+          rel="stylesheet"
+          type="text/css"
+        />
         <AppLayout>
           <Header />
           {children}

@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
 
@@ -52,8 +53,15 @@ interface InquiryCardIProps {
 const InquiryCard: React.FC<InquiryCardIProps> = (props) => {
   const { icon, title, content } = props;
 
+  const router = useRouter();
+
   return (
-    <Contaienr>
+    <Contaienr
+      onClick={() => {
+        if (title === "견적문의하기") router.push("/estimate-inquiry");
+      }}
+      style={{ cursor: title === "견적문의하기" ? "pointer" : "" }}
+    >
       <Image src={icon} alt="inquiry icon" />
       <CardItemContainer>
         <Title>{title}</Title>

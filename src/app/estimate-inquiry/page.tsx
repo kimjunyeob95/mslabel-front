@@ -81,14 +81,14 @@ const EstimateInquiryPage = () => {
         >
           견적문의
         </RefItem>
-        <RefItem
+        {/* <RefItem
           $isActivie={isActivieRef === "공지사항"}
           onClick={() => {
             handleSetIsActiveRef("공지사항");
           }}
         >
           공지사항
-        </RefItem>
+        </RefItem> */}
       </RefContainer>
       <Row
         justifyContent="flex-end"

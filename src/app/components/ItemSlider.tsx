@@ -55,6 +55,14 @@ const SlideContainer = styled(Swiper)`
     max-width: 1288px;
   }
 
+  .swiper-button-next {
+    display: none;
+  }
+
+  .swiper-button-prev {
+    display: none;
+  }
+
   .swiper-slide {
     display: flex;
     flex-direction: column;
@@ -138,6 +146,8 @@ const ItemSlider: React.FC<ItemSliderIProps> = (props) => {
         spaceBetween={44}
         centeredSlides={false}
         navigation={true}
+        allowSlidePrev={false}
+        allowSlideNext={false}
         breakpoints={{
           1471: {
             slidesPerView: 3,

@@ -27,7 +27,9 @@ export const useEstimateListHooks = () => {
   const handleGetEstimateList = async () => {
     try {
       const response = await instance.get(
-        `${ADMIN_BOARD_BOARD}?group_id=${boardParams.group_id}&sub_id=${boardParams.sub_id}&page=${boardParams.page}&page_size=${boardParams.page_size}&sort=${boardParams.sort}`
+        `${ADMIN_BOARD_BOARD}?group_id=${5}&sub_id=${12}&page=${
+          boardParams.page
+        }&page_size=${boardParams.page_size}&sort=${boardParams.sort}`
       );
 
       if (response) {

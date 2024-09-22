@@ -32,8 +32,8 @@ const Title = styled.div`
 `;
 
 const ClientCardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
   gap: 38px;
   flex: 50%;
@@ -49,10 +49,10 @@ const ClientIntroduce = () => {
         </Title>
       </Column>
       <ClientCardContainer>
-        <ClientCard />
-        <ClientCard />
-        <ClientCard />
-        <ClientCard />
+        <ClientCard section="first" />
+        <ClientCard section="second" />
+        <ClientCard section="third" />
+        <ClientCard section="fourth" />
       </ClientCardContainer>
     </Container>
   );

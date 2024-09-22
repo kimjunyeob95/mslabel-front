@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 import styled from "styled-components";
 
@@ -53,9 +54,12 @@ const StartButton = styled.div`
   font-weight: 400;
   line-height: 38px;
   color: #143e7e;
+  cursor: pointer;
 `;
 
 const IntroduceContainer = () => {
+  const router = useRouter();
+
   return (
     <Container>
       <Title>
@@ -65,7 +69,9 @@ const IntroduceContainer = () => {
       <Description>
         고객의 오랜 고민을 덜 수 있도록 좋은 퀄리티로 보답하겠습니다.
       </Description>
-      <StartButton>시작하기</StartButton>
+      <StartButton onClick={() => router.push("/estimate-inquiry")}>
+        시작하기
+      </StartButton>
     </Container>
   );
 };

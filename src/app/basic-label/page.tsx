@@ -15,6 +15,8 @@ import {
 import ItemSlider from "../components/ItemSlider";
 import { useSubMenuListHooks } from "../components/hooks/useSubMenuListHooks";
 import { usePathname } from "next/navigation";
+import Text from "../components/Text";
+import Column from "../components/Column";
 
 const Container = styled.div`
   display: flex;
@@ -57,11 +59,12 @@ const RefItem = styled.div<{ $isActivie: boolean }>`
 
 const ImageContainer = styled.div`
   display: flex;
-  padding: 140px 102px;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 24px;
-  background-color: #ececec;
+  height: 320px;
+  background: var(--Background-Skyblue, #eff5ff);
 `;
 
 export const MOCK_DATA: {
@@ -90,7 +93,7 @@ const SPECIAL_MOCK_DATA = [
   {
     thumbnail: IMAGE_AROUND_THUMBNAIL,
     title: "부분접착",
-    description: `라벨의 일부에만 접찫제를 사용하여, 쉽게 제거하거나 다시 부착할 수 있으며, 자주 떼었다 붙이는 용도에 적합합니다.`,
+    description: `라벨의 일부에만 접착제를 사용하여, 쉽게 제거하거나 다시 부착할 수 있으며, 자주 떼었다 붙이는 용도에 적합합니다.`,
   },
   {
     thumbnail: IMAGE_GENUINE_THUMBNAIL,
@@ -118,7 +121,7 @@ const BasicLabelPage = () => {
 
   const handleOnScrollToRef = (ref: any, tabName: string) => {
     window.scrollTo({
-      top: ref.current.offsetTop - 150,
+      top: ref.current.offsetTop - 100,
       behavior: "auto",
     });
 
@@ -181,7 +184,23 @@ const BasicLabelPage = () => {
 
   return (
     <Container>
-      <ImageContainer />
+      <ImageContainer>
+        <Column gap="24px">
+          <Text color="#2a486d" size="32px" weight={700}>
+            일반 라벨
+          </Text>
+          <Text
+            color="#414141"
+            size="20px"
+            style={{ lineHeight: "32px", textAlign: "center" }}
+          >
+            프레스(1,2도)와 로타리(3도 이상) 기기로 제작하는 라벨입니다.
+            <br />
+            다품종 대량생산을 통해 비용 효율성을 극대화하며, 고객의 브랜드
+            가치를 높이는 효과적인 라벨 솔루션입니다.
+          </Text>
+        </Column>
+      </ImageContainer>
       <RefContainer>
         {basicLabelSubMenuList?.result.map((item, idx) => {
           return (
@@ -189,7 +208,10 @@ const BasicLabelPage = () => {
               key={idx}
               $isActivie={isActivieRef === item.sub_title}
               onClick={() => {
-                handleOnScrollToRef(firstTabRef, item.sub_title);
+                handleOnScrollToRef(
+                  item.sub_title === "업종별 라벨" ? firstTabRef : secondTabRef,
+                  item.sub_title
+                );
               }}
             >
               {item.sub_title}
@@ -211,8 +233,8 @@ const BasicLabelPage = () => {
         items={SPECIAL_MOCK_DATA}
         link="basic-label/10?group_id=3&sub_id=10"
       />
-      {/* <div ref={thirdTabRef} />
-      <ItemSlider
+      <div ref={thirdTabRef} />
+      {/* <ItemSlider
         title="전문 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}

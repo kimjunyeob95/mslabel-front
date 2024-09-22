@@ -8,6 +8,15 @@ const IMAGE_MARKETINGLABEL_THUMBNAIL = require("./image_marketinglabel_thumbnail
 const IMAGE_PRODUCTLABEL_THUMBNAIL = require("./image_productlabel_thumbnail.png");
 const IMAGE_ESTIMATE_COMPLETE = require("./image_estimate_complete.png");
 const IMAGE_BANNER_THUMBNAIL = require("./image_banner_thumbnail.png");
+const IMAGE_BUSINESS_INTRODUCE_THUMBNAIL = require("./image_business_introduce_thumbnail.png");
+const IMAGE_BUSINESS_BRANDLABEL = require("./image_business_brandlabel.png");
+const IMAGE_BUSINESS_SIMPLELABEL = require("./image_business_simplelabel.png");
+const IMAGE_BUSINESS_DIGITALLABEL = require("./image_business_digitallabel.png");
+
+const IMAGE_COMPANY_CEO = require("./image_company_ceo.png");
+const IMAGE_COMPANY_CLIENT = require("./image_company_client.png");
+const IMAGE_COMPANY_HISTORY = require("./image_company_history.png");
+const IMAGE_COMPANY_VISION = require("./image_company_vision.png");
 
 const IMAGE_COSMETIC_THUMBNAIL = require("./image_cosmetics_thumbnail.png");
 const IMAGE_HEALTH_THUMBNAIL = require("./image_health_thumbnail.png");
@@ -27,6 +36,14 @@ export {
   IMAGE_PRODUCTLABEL_THUMBNAIL,
   IMAGE_ESTIMATE_COMPLETE,
   IMAGE_BANNER_THUMBNAIL,
+  IMAGE_BUSINESS_INTRODUCE_THUMBNAIL,
+  IMAGE_BUSINESS_BRANDLABEL,
+  IMAGE_BUSINESS_SIMPLELABEL,
+  IMAGE_BUSINESS_DIGITALLABEL,
+  IMAGE_COMPANY_CEO,
+  IMAGE_COMPANY_CLIENT,
+  IMAGE_COMPANY_HISTORY,
+  IMAGE_COMPANY_VISION,
   IMAGE_COSMETIC_THUMBNAIL,
   IMAGE_HEALTH_THUMBNAIL,
   IMAGE_FOOD_THUMBNAIL,

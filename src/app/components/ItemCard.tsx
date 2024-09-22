@@ -44,7 +44,8 @@ const ItemCard: React.FC<ItemCardIProps> = (props) => {
   const { thumbnail, title, description, id } = props;
 
   return (
-    <Link href={`/label-detail/${id}`}>
+    <>
+      {/* <Link href={`/label-detail/${id}`}> */}
       {thumbnail && (
         <ThumbnailImage
           src={thumbnail}
@@ -57,7 +58,8 @@ const ItemCard: React.FC<ItemCardIProps> = (props) => {
         <p>{title}</p>
         <span>{description}</span>
       </ItemCardContainer>
-    </Link>
+      {/* </Link> */}
+    </>
   );
 };
 

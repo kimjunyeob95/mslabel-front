@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import styled from "styled-components";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MAIN_LOGO } from "../assets/svg";
 import { useHeaderHooks } from "./hooks/useHeaderHooks";
+import Row from "./Row";
 
 const Container = styled.div`
   display: flex;
@@ -78,6 +79,8 @@ const Text = styled.div`
 
 export const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
   const [isActiveIndex, setIsActiveIndex] = useState<number | null>(null);
   const {
     headerItem,
@@ -114,18 +117,29 @@ export const Header = () => {
                 >
                   {item.title}
                 </div>
-                {isActiveIndex === idx + 1 && (
+                {item.title !== "사업소개" && isActiveIndex === idx + 1 && (
                   <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
                     {item.sub_menus?.map((subMenuItem, subMenuIdx) => {
+                      if (
+                        subMenuItem.title === "오시는 길" ||
+                        subMenuItem.title === "공지사항"
+                      ) {
+                        return;
+                      }
+
                       return (
-                        <Link
-                          href={`${handleGetUrl(item.id)}/${
-                            subMenuItem.id
-                          }?group_id=${item.id}&sub_id=${subMenuItem.id}`}
+                        <Row
+                          onClick={() => {
+                            router.push(
+                              `${handleGetUrl(item.id)}/${
+                                subMenuItem.id
+                              }?group_id=${item.id}&sub_id=${subMenuItem.id}`
+                            );
+                          }}
                           key={subMenuIdx}
                         >
                           <Text>{subMenuItem.title}</Text>
-                        </Link>
+                        </Row>
                       );
                     })}
                   </ContentItems>
