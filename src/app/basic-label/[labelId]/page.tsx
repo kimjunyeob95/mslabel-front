@@ -50,6 +50,22 @@ const BasicLabelDetailPage = () => {
             description="제품의 독특한 특성과 기능성을 부각시키는 라벨로, 특정 용도에 맞춘 다양한 기술과 재질이 활용되는 라벨입니다."
           />
         );
+      case "19":
+        return (
+          <BasicLabelDetailContainer
+            basicLabelList={basicLabelList!}
+            title="전문 라벨입니다"
+            description="특정 요구 사항에 맞춰 정밀하게 설계된 라벨로 기능성과 정확성을 중시하여 특별한 목적을 위해 사용하는 라벨입니다."
+          />
+        );
+      case "20":
+        return (
+          <BasicLabelDetailContainer
+            basicLabelList={basicLabelList!}
+            title="단순 라벨입니다"
+            description="기본적인 정보 전달을 목적으로 한 간결하고 기능적인 라벨로, 주로 필수적인 데이터나 지침을 명확하게 표시하는 데 사용하는 라벨입니다."
+          />
+        );
 
       default:
         return <></>;

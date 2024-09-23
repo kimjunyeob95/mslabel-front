@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import { instance } from "@/app/util/instance";
 import { SubMenuList } from "@/app/models/HeaderType";
@@ -24,22 +25,7 @@ export const useSubMenuListHooks = () => {
     keyword: "",
   });
 
-  const getSubMenuList = async () => {
-    try {
-      const response = await instance.get(
-        `${ADMIN_SUB_MENU}?page=${subMenuParams.page}&page_size=${subMenuParams.page_size}`
-      );
-
-      if (response) {
-        setSubMenuList(response.data.data);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const handleSetSubmenuParams = (key: string, value: any) => {
-    console.log(key, value);
     setSubMenuParams({ ...subMenuParams, [key]: value });
   };
 
@@ -56,10 +42,6 @@ export const useSubMenuListHooks = () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    getSubMenuList();
-  }, [subMenuParams.page]);
 
   return {
     subMenuList,

@@ -6,6 +6,14 @@ import { MOCK_DATA } from "../basic-label/page";
 import ItemSlider from "../components/ItemSlider";
 import Column from "../components/Column";
 import Text from "../components/Text";
+import {
+  IMAGE_DIGITAL_COSMETIC_THUMBNAIL,
+  IMAGE_DIGITAL_FOOD_THUMBNAIL,
+  IMAGE_DIGITAL_TUBE_THUMBNAIL,
+  IMAGE_DIGITAL_PIECE_THUMBNAIL,
+  IMAGE_DIGITAL_DIY_THUMBNAIL,
+  IMAGE_DIGITAL_CIRCLE_THUMBNAIL,
+} from "../assets/image";
 
 const Container = styled.div`
   display: flex;
@@ -55,6 +63,42 @@ const ImageContainer = styled.div`
   height: 320px;
   background: var(--Background-Skyblue, #eff5ff);
 `;
+
+const PURPOSE_MOCK_DATA = [
+  {
+    thumbnail: IMAGE_DIGITAL_COSMETIC_THUMBNAIL,
+    title: "화장품",
+    description: `유연성과 투명도를 가진 라벨이 주로 사용됩니다. 특히 유포지나 무광라미를 사용하며, 엠보싱 등 특수 인쇄로도 제작합니다.`,
+  },
+  {
+    thumbnail: IMAGE_DIGITAL_TUBE_THUMBNAIL,
+    title: "식품 / 유통",
+    description: `신선도와 안전성을 유지하며, 내구성과 내습성을 갖추기 위해 감열지, 아트지를 많이 사용합니다.`,
+  },
+  {
+    thumbnail: IMAGE_DIGITAL_FOOD_THUMBNAIL,
+    title: "튜브",
+    description: `튜브 형태의 제품에 적용될 수 있도록 라벨이 유연하게 제작되어 곡선이나 구부러진 표면에 잘 부착됩니다.`,
+  },
+];
+
+const FORM_MOCK_DATA = [
+  {
+    thumbnail: IMAGE_DIGITAL_PIECE_THUMBNAIL,
+    title: "낱장",
+    description: `직접 만든 이미지 크기와 디자인에 맞춰 라벨이 제작되어,  소규모 생산과 특별 이벤트 상품, 프로모션 등에 사용 됩니다.`,
+  },
+  {
+    thumbnail: IMAGE_DIGITAL_DIY_THUMBNAIL,
+    title: "DIY",
+    description: `원하는 디자인과 형태로 제작하여 모양대로 잘라주는 라벨로 차별화된 제품을 만들는 데 최적화된 맞춤형 라벨입니다. `,
+  },
+  {
+    thumbnail: IMAGE_DIGITAL_CIRCLE_THUMBNAIL,
+    title: "원형",
+    description: `가장 많이 사용하는 기본 틀로 깔끔하고 세련된 라벨로 다양한 용도로 활용됩니다.`,
+  },
+];
 
 const DigitalLabelPage = () => {
   const [isActivieRef, setIsActiveRef] = useState<string>("용도별 라벨");
@@ -141,15 +185,15 @@ const DigitalLabelPage = () => {
         >
           용도별 라벨
         </RefItem>
-        {/* <RefItem
+        <RefItem
           $isActivie={isActivieRef === "형태"}
           onClick={() => {
             handleOnScrollToRef(secondTabRef, "형태");
           }}
         >
-          형태
+          형태별 라벨
         </RefItem>
-        <RefItem
+        {/* <RefItem
           $isActivie={isActivieRef === "원단"}
           onClick={() => {
             handleOnScrollToRef(thirdTabRef, "원단");
@@ -170,18 +214,18 @@ const DigitalLabelPage = () => {
       <ItemSlider
         title="용도별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
-        items={MOCK_DATA}
-        link="digital-label/1"
+        items={PURPOSE_MOCK_DATA}
+        link="digital-label/16?group_id=4&sub_id=16"
       />
       <div ref={secondTabRef} />
-      {/* <ItemSlider
+      <ItemSlider
         title="형태별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
-        items={MOCK_DATA}
-        link="digital-label/2"
+        items={FORM_MOCK_DATA}
+        link="digital-label/17?group_id=4&sub_id=17"
       />
       <div ref={thirdTabRef} />
-      <ItemSlider
+      {/* <ItemSlider
         title="원단별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}

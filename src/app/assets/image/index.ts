@@ -24,6 +24,18 @@ const IMAGE_FOOD_THUMBNAIL = require("./image_food_thumbnail.png");
 const IMAGE_AROUND_THUMBNAIL = require("./image_around_thumbnail.png");
 const IMAGE_TRANSPARENT_THUMBNAIL = require("./image_transparent_thumbnail.png");
 const IMAGE_GENUINE_THUMBNAIL = require("./image_genuine_thumbnail.png");
+const IMAGE_SECURITY_THUMBNAIL = require("./image_security_thumbnail.png");
+const IMAGE_DOUBLE_THUMBNAIL = require("./image_double_thumbnail.png");
+const IMAGE_BACKSIDE_THUMBNAIL = require("./image_backside_thumbnail.png");
+const IMAGE_BARCODE_THUMBNAIL = require("./image_barcode_thumbnail.png");
+const IMAGE_INGREDIENT_THUMBNAIL = require("./image_ingredient_thumbnail.png");
+const IMAGE_INFORMATION_THUMBNAIL = require("./image_information_thumbnail.png");
+const IMAGE_DIGITAL_COSMETIC_THUMBNAIL = require("./image_digital_cosmetic_thumbnail.png");
+const IMAGE_DIGITAL_FOOD_THUMBNAIL = require("./image_digital_food_thumbnail.png");
+const IMAGE_DIGITAL_TUBE_THUMBNAIL = require("./image_digital_tube_thumbnail.png");
+const IMAGE_DIGITAL_PIECE_THUMBNAIL = require("./image_digital_piece_thumbnail.png");
+const IMAGE_DIGITAL_DIY_THUMBNAIL = require("./image_digital_diy_thumbnail.png");
+const IMAGE_DIGITAL_CIRCLE_THUMBNAIL = require("./image_digital_circle_thumbnail.png");
 
 export {
   IMAGE_NOTIFICATION_THUMBNAIL,
@@ -50,4 +62,16 @@ export {
   IMAGE_AROUND_THUMBNAIL,
   IMAGE_TRANSPARENT_THUMBNAIL,
   IMAGE_GENUINE_THUMBNAIL,
+  IMAGE_SECURITY_THUMBNAIL,
+  IMAGE_DOUBLE_THUMBNAIL,
+  IMAGE_BACKSIDE_THUMBNAIL,
+  IMAGE_BARCODE_THUMBNAIL,
+  IMAGE_INGREDIENT_THUMBNAIL,
+  IMAGE_INFORMATION_THUMBNAIL,
+  IMAGE_DIGITAL_COSMETIC_THUMBNAIL,
+  IMAGE_DIGITAL_FOOD_THUMBNAIL,
+  IMAGE_DIGITAL_TUBE_THUMBNAIL,
+  IMAGE_DIGITAL_PIECE_THUMBNAIL,
+  IMAGE_DIGITAL_DIY_THUMBNAIL,
+  IMAGE_DIGITAL_CIRCLE_THUMBNAIL,
 };

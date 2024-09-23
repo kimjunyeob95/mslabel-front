@@ -43,6 +43,14 @@ const DigitalLabelDetailPage = () => {
             description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
           />
         );
+      case "17":
+        return (
+          <BasicLabelDetailContainer
+            basicLabelList={basicLabelList!}
+            title="형태별 라벨입니다"
+            description="다양한 크기와 형태로 제작 가능하며, 특정 제품에 맞춘 디자인과 기능성을 제공하는 라벨입니다."
+          />
+        );
       // case "2":
       //   return (
       //     <BasicLabelDetailContainer

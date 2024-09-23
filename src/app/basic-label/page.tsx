@@ -11,10 +11,15 @@ import {
   IMAGE_AROUND_THUMBNAIL,
   IMAGE_TRANSPARENT_THUMBNAIL,
   IMAGE_GENUINE_THUMBNAIL,
+  IMAGE_SECURITY_THUMBNAIL,
+  IMAGE_DOUBLE_THUMBNAIL,
+  IMAGE_BACKSIDE_THUMBNAIL,
+  IMAGE_BARCODE_THUMBNAIL,
+  IMAGE_INGREDIENT_THUMBNAIL,
+  IMAGE_INFORMATION_THUMBNAIL,
 } from "../assets/image";
 import ItemSlider from "../components/ItemSlider";
 import { useSubMenuListHooks } from "../components/hooks/useSubMenuListHooks";
-import { usePathname } from "next/navigation";
 import Text from "../components/Text";
 import Column from "../components/Column";
 
@@ -75,17 +80,17 @@ export const MOCK_DATA: {
   {
     thumbnail: IMAGE_COSMETIC_THUMBNAIL,
     title: "화장품",
-    description: `제품의 고급스러움과 브랜드 이미지를 강화하기 위해 다양한 색상과 질감의 재질이 사용되며, 유연성과 투명도를 가진 라벨이 주로 사용됩니다. 엠보싱 등 특수 인쇄 기법이 활용됩니다.`,
+    description: `유연성과 투명도를 가진 라벨이 주로 사용됩니다. 특히 유포지나 무광라미를 사용하며, 엠보싱 등 특수 인쇄로도 제작합니다.`,
   },
   {
     thumbnail: IMAGE_HEALTH_THUMBNAIL,
     title: "제약 / 건강식품",
-    description: `쉽게 훼손되지 않도록 내구성과 내화학성이 뛰어난 재질이 사용됩니다. 복잡한 정보를 효과적으로 전달하기 위해 이중 라벨이 사용되기도 하며, 가독성을 높인 디자인이 중요합니다. `,
+    description: `복잡한 정보를 효과적으로 전달하기 위해 이중 라벨이 사용되기도 하며, 아트지와 금무지, 유광라미를 많이 사용합니다.`,
   },
   {
     thumbnail: IMAGE_FOOD_THUMBNAIL,
     title: "식품 / 유통",
-    description: `신선도와 안전성을 유지하며, 다양한 환경에서 명확한 정보 제공을 위해 내구성과 내습성을 갖추면서 시각적으로 매력적인 디자인을 통해 소비자의 관심을 끕니다.`,
+    description: `신선도와 안전성을 유지하며, 내구성과 내습성을 갖추기 위해 감열지, 아트지를 많이 사용합니다.`,
   },
 ];
 
@@ -98,12 +103,48 @@ const SPECIAL_MOCK_DATA = [
   {
     thumbnail: IMAGE_GENUINE_THUMBNAIL,
     title: "정품인증",
-    description: `제품의 진품 여부를 확인할 수 있도록 특수한 인쇄 기술이나 홀로그램 등을 사용하여 위조를 방지하며, 소비자에게 신뢰를 줍니다.`,
+    description: `제품의 진품 여부를 확인할 수 있도록 특수한 인쇄 기술이나 홀로그램 등을 사용하여 위조를 방지하기 위해 활용합니다.`,
   },
   {
     thumbnail: IMAGE_TRANSPARENT_THUMBNAIL,
     title: "투명라벨",
-    description: `라벨이 제품과 자연스럽게 어우러지도록 투명한 재질로 제작되어, 내용물을 강조하거나 제품의 고유 디자인을 유지하는 데 효과적입니다.`,
+    description: `라벨과 제품이 어우러지게 투명한 재질로 제작하여 내용물을 강조하고 제품의 고유 디자인을 유지하는 데 효과적입니다.`,
+  },
+];
+
+const PROFESSIONAL_MOCK_DATA = [
+  {
+    thumbnail: IMAGE_SECURITY_THUMBNAIL,
+    title: "봉인/보안",
+    description: `제품의 무단 개봉을 방지하고 원상태 유지를 확인할 수 있도록 설계된 라벨로, 제거 시 파손되거나 보안 문구가 나타나도록 제작되어 보안성을 극대화합니다.`,
+  },
+  {
+    thumbnail: IMAGE_DOUBLE_THUMBNAIL,
+    title: "2중라벨/이중지",
+    description: `제한된 공간에 많은 정보를 제공하기 위해 두 겹으로 구성된 라벨로, 상단 라벨을 들추면 숨겨진 정보가 나타나며, 다량의 법적 정보를 포함해야하는 제품에 적합합니다.`,
+  },
+  {
+    thumbnail: IMAGE_BACKSIDE_THUMBNAIL,
+    title: "배면",
+    description: `투명한 용기 뒷면에 부착되어 제품을 통해 라벨이 보이도록 디자인된 라벨로, 제품 내용물의 색상과 디자인을 강조하며, 시각적 일체감을 제공합니다.`,
+  },
+];
+
+const SIMPLELABEL_MOCK_DATA = [
+  {
+    thumbnail: IMAGE_BARCODE_THUMBNAIL,
+    title: "바코드",
+    description: `제품의 식별과 관리, 추적을 위해 사용하며, 스캐너로 읽을 수 있도록 고정된 형식의 코드가 인쇄된 라벨입니다.`,
+  },
+  {
+    thumbnail: IMAGE_INGREDIENT_THUMBNAIL,
+    title: "성분표기",
+    description: `제품의 구성 성분과 영양 정보 등을 알리기 위해 설계된 라벨로 특히 식품, 화장품, 건강식품에 많이 활용합니다.`,
+  },
+  {
+    thumbnail: IMAGE_INFORMATION_THUMBNAIL,
+    title: "안내",
+    description: `사용법, 주의사항, 보관 방법 등 제품 사용에 필요한 정보를 간단하고 명확하게 전달하는 라벨로, 카페, 상점 등에서 고객에게 영업시간, 이벤트 정보 등을 안내하는 데에도 사용됩니다.`,
   },
 ];
 
@@ -151,14 +192,14 @@ const BasicLabelPage = () => {
       scrollPosition >= thirdTabRef.current.offsetTop &&
       scrollPosition < fourthTabRef.current.offsetTop
     ) {
-      setIsActiveRef("전문");
+      setIsActiveRef("전문 라벨");
     } else if (
       fourthTabRef.current &&
       fifthTabRef.current &&
       scrollPosition >= fourthTabRef.current.offsetTop &&
       scrollPosition < fifthTabRef.current.offsetTop
     ) {
-      setIsActiveRef("단순");
+      setIsActiveRef("단순 라벨");
     } else if (
       fifthTabRef.current &&
       scrollPosition >= fifthTabRef.current.offsetTop &&
@@ -208,10 +249,16 @@ const BasicLabelPage = () => {
               key={idx}
               $isActivie={isActivieRef === item.sub_title}
               onClick={() => {
-                handleOnScrollToRef(
-                  item.sub_title === "업종별 라벨" ? firstTabRef : secondTabRef,
-                  item.sub_title
-                );
+                const ref =
+                  item.sub_title === "업종별 라벨"
+                    ? firstTabRef
+                    : item.sub_title === "특수 라벨"
+                    ? secondTabRef
+                    : item.sub_title === "전문 라벨"
+                    ? thirdTabRef
+                    : fourthTabRef;
+
+                handleOnScrollToRef(ref, item.sub_title);
               }}
             >
               {item.sub_title}
@@ -234,21 +281,21 @@ const BasicLabelPage = () => {
         link="basic-label/10?group_id=3&sub_id=10"
       />
       <div ref={thirdTabRef} />
-      {/* <ItemSlider
+      <ItemSlider
         title="전문 라벨입니다"
-        description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
-        items={MOCK_DATA}
-        link="basic-label/3"
+        description="특정 요구 사항에 맞춰 정밀하게 설계된 라벨로 기능성과 정확성을 중시하여 특별한 목적을 위해 사용하는 라벨입니다."
+        items={PROFESSIONAL_MOCK_DATA}
+        link="basic-label/19?group_id=3&sub_id=19"
       />
       <div ref={fourthTabRef} />
       <ItemSlider
         title="단순 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
-        items={MOCK_DATA}
+        items={SIMPLELABEL_MOCK_DATA}
         link="basic-label"
       />
       <div ref={fifthTabRef} />
-      <ItemSlider
+      {/* <ItemSlider
         title="원단별 라벨입니다"
         description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
         items={MOCK_DATA}

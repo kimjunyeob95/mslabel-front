@@ -51,7 +51,7 @@ const Description = styled.div`
 
 const GridContainer = styled.div`
   display: grid;
-  align-items: center;
+  align-items: flex-start;
   grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 44px;
   padding: 20px;

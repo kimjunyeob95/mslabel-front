@@ -33,7 +33,7 @@ export const useBasicLabelHooks = () => {
   const handleGetBasicLabelList = async () => {
     try {
       const response = await instance.get(
-        `${ADMIN_BOARD_PRODUCT}?group_id=${group_id}&sub_id=${params.labelId}&page=${pageSize}&page_size=10&sort=created_at|desc`
+        `${ADMIN_BOARD_PRODUCT}?group_id=${group_id}&sub_id=${params.labelId}&page=${pageSize}&page_size=10&sort=created_at|asc`
       );
 
       if (response) {

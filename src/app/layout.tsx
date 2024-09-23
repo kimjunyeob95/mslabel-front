@@ -46,10 +46,11 @@ export default function RootLayout({
   };
 
   useEffect(() => {
+    console.log("render");
     if (localStorage.getItem("token") === null) handleLogin();
 
-    handleLogin();
-  }, []);
+    // handleLogin();
+  }, [window.location.pathname]);
 
   return (
     <html lang="en">
