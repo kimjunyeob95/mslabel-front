@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import styled from "styled-components";
 import { ICON_INTRODUCE_LOGO } from "@/app/assets/svg";
 import {
@@ -10,6 +9,7 @@ import {
   IMAGE_COMPANY_HISTORY,
   IMAGE_COMPANY_VISION,
 } from "@/app/assets/image";
+import { useParams } from "next/navigation";
 
 const Container = styled.div`
   display: flex;
@@ -87,7 +87,7 @@ const MoreButton = styled.div`
   line-height: 24px;
 `;
 
-const page = () => {
+const CompanyIntroducePage = () => {
   const params = useParams<{ introduceId: string }>();
 
   const renderCompanyIntroduce = (): JSX.Element => {
@@ -120,4 +120,4 @@ const page = () => {
   return renderCompanyIntroduce();
 };
 
-export default page;
+export default CompanyIntroducePage;

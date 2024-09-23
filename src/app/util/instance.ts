@@ -1,17 +1,20 @@
 import axios from "axios";
 import { API_BASE_URL } from "./constant";
 
+// 기본 axios 인스턴스 생성
 export const instance = axios.create({
   baseURL: API_BASE_URL,
-  headers: { Authorization: localStorage.getItem("token") },
 });
 
+// 인터셉터 추가
 instance.interceptors.request.use(
   (config) => {
-    // 로컬 스토리지 또는 다른 저장소에서 토큰 가져오기
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+    // 클라이언트 환경에서만 localStorage 접근
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("token");
+      if (token) {
+        config.headers["Authorization"] = `Bearer ${token}`;
+      }
     }
     return config;
   },

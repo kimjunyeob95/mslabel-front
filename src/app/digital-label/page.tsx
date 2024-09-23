@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import InquiryContainer from "../(main)/InquiryContainer";
-import { MOCK_DATA } from "../basic-label/page";
 import ItemSlider from "../components/ItemSlider";
 import Column from "../components/Column";
 import Text from "../components/Text";

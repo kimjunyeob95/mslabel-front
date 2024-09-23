@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Virtual, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";

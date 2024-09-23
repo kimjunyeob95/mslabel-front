@@ -22,6 +22,7 @@ import ItemSlider from "../components/ItemSlider";
 import { useSubMenuListHooks } from "../components/hooks/useSubMenuListHooks";
 import Text from "../components/Text";
 import Column from "../components/Column";
+import { usePathname } from "next/navigation";
 
 const Container = styled.div`
   display: flex;
@@ -72,11 +73,7 @@ const ImageContainer = styled.div`
   background: var(--Background-Skyblue, #eff5ff);
 `;
 
-export const MOCK_DATA: {
-  thumbnail: any;
-  title: string;
-  description: string;
-}[] = [
+const MOCK_DATA = [
   {
     thumbnail: IMAGE_COSMETIC_THUMBNAIL,
     title: "화장품",
@@ -152,8 +149,6 @@ const BasicLabelPage = () => {
   const [isActivieRef, setIsActiveRef] = useState<string>("업종별 라벨");
   const { basicLabelSubMenuList, getSubBasicLabelList } = useSubMenuListHooks();
 
-  const { group_id } = parse(window.location.search);
-
   const firstTabRef = useRef<HTMLDivElement>(null);
   const secondTabRef = useRef<HTMLDivElement>(null);
   const thirdTabRef = useRef<HTMLDivElement>(null);
@@ -218,10 +213,12 @@ const BasicLabelPage = () => {
   }, []);
 
   useEffect(() => {
-    if (group_id) {
+    if (typeof window !== "undefined") {
+      const { group_id } = parse(window.location.search);
+
       getSubBasicLabelList(Number(group_id));
     }
-  }, [group_id]);
+  }, []);
 
   return (
     <Container>

@@ -47,10 +47,10 @@ export default function RootLayout({
 
   useEffect(() => {
     console.log("render");
-    if (localStorage.getItem("token") === null) handleLogin();
-
-    // handleLogin();
-  }, [window.location.pathname]);
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("token") === null) handleLogin();
+    }
+  }, []);
 
   return (
     <html lang="en">

@@ -13,12 +13,10 @@ export interface BoardParams {
 }
 
 export const useEstimateListHooks = () => {
-  const { group_id, sub_id } = parse(window.location.search);
-
   const [estimateList, setEstimateList] = useState<EstimateListType>();
   const [boardParams, setBoardParams] = useState<BoardParams>({
-    group_id: group_id ? Number(group_id) : 5,
-    sub_id: sub_id ? Number(sub_id) : 12,
+    group_id: 5,
+    sub_id: 12,
     page: 1,
     page_size: 20,
     sort: "created_at|desc",
@@ -39,6 +37,18 @@ export const useEstimateListHooks = () => {
       alert(error.response.data.error.message);
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const { group_id, sub_id } = parse(window.location.search);
+
+      setBoardParams({
+        ...boardParams,
+        group_id: Number(group_id),
+        sub_id: Number(sub_id),
+      });
+    }
+  });
 
   useEffect(() => {
     handleGetEstimateList();
