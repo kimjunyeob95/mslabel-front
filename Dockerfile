@@ -1,36 +1,35 @@
-FROM node:18-alpine AS deps
+FROM node:18-alpine AS base
 RUN apk add --no-cache libc6-compat
-WORKDIR /var/www/mslabel-front
+WORKDIR /app
 
+# Dependencies stage
+FROM base AS deps
 COPY package.json package-lock.json ./
-RUN  npm install --production
+RUN npm ci
 
-FROM node:18-alpine AS builder
-WORKDIR /var/www/mslabel-front
-COPY --from=deps /var/www/mslabel-front/node_modules ./node_modules
+# Development stage
+FROM base AS development
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
 ENV NEXT_TELEMETRY_DISABLED 1
+CMD ["npm", "run", "dev"]
 
+# Build stage
+FROM base AS builder
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm run build
 
-FROM node:18-alpine AS runner
-WORKDIR /var/www/mslabel-front
-
-ENV NODE_ENV production
+# Production stage
+FROM base AS production
 ENV NEXT_TELEMETRY_DISABLED 1
-
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder --chown=nextjs:nodejs /var/www/mslabel-front/.next ./.next
-COPY --from=builder /var/www/mslabel-front/node_modules ./node_modules
-COPY --from=builder /var/www/mslabel-front/package.json ./package.json
-
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
-
 EXPOSE 3000
-
 ENV PORT 3000
-
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
