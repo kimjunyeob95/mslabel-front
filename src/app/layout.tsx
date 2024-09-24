@@ -46,10 +46,11 @@ export default function RootLayout({
   };
 
   useEffect(() => {
-    console.log("render");
     if (typeof window !== "undefined") {
       if (localStorage.getItem("token") === null) handleLogin();
     }
+
+    handleLogin();
   }, []);
 
   return (

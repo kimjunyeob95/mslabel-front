@@ -287,7 +287,7 @@ const BasicLabelPage = () => {
       <div ref={fourthTabRef} />
       <ItemSlider
         title="단순 라벨입니다"
-        description="화장품, 제약, 식품 등 다양한 브랜드에서 제품과 브랜드를 홍보하기 위해 사용하는 라벨입니다."
+        description="기본적인 정보 전달을 목적으로 한 간결하고 기능적인 라벨로 1도, 2도로 컬러가 적을 때 활용하는 라벨입니다. "
         items={SIMPLELABEL_MOCK_DATA}
         link="basic-label"
       />
