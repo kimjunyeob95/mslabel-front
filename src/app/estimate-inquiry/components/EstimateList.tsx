@@ -112,7 +112,7 @@ const EstimateList: React.FC<EstimateListIProps> = (props) => {
       <EstimateGrid>
         <EstimateTitle>제목</EstimateTitle>
         <EstimateTitle>의뢰인</EstimateTitle>
-        <EstimateTitle>의뢰인</EstimateTitle>
+        <EstimateTitle>의뢰일자</EstimateTitle>
         <EstimateTitle>진행사항</EstimateTitle>
         {estimateList.records?.map((item, idx) => {
           return (

@@ -48,7 +48,7 @@ export const useEstimateListHooks = () => {
         sub_id: Number(sub_id),
       });
     }
-  });
+  }, []);
 
   useEffect(() => {
     handleGetEstimateList();
