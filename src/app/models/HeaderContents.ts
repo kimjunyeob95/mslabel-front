@@ -6,7 +6,7 @@ export interface HeaderContents {
 
 export const HEADER_CONTENT = [
   {
-    title: "회사소개",
+    title: "회사소개2222",
     route: "/company-introduce",
     items: [
       {

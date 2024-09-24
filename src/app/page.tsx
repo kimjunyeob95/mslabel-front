@@ -26,7 +26,7 @@ export default function Home() {
       <Image
         src={IMAGE_BANNER_THUMBNAIL}
         alt="thumbnail"
-        width={1920}
+        style={{ width: "100%" }}
         height={560}
       />
       <DescrptionContainer />

@@ -115,7 +115,7 @@ export const Header = () => {
                     }`,
                   }}
                 >
-                  {item.title}
+                  {item.title} 
                 </div>
                 {item.title !== "사업소개" && isActiveIndex === idx + 1 && (
                   <ContentItems onMouseLeave={() => setIsActiveIndex(null)}>
