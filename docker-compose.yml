@@ -17,4 +17,4 @@ services:
       - PORT=3000
     env_file:
       - .env
-    command: sh -c "if [ \"$NODE_ENV\" = \"production\" ]; then node server.js; else npm run dev; fi"
+    command: sh -c "if [ \"$NODE_ENV\" = \"production\" ]; then npm start; else npm run dev; fi"
