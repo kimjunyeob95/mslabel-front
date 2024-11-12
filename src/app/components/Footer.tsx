@@ -154,7 +154,7 @@ const Footer = () => {
             <InformationContentItem>
               <InformationItem>
                 <p>팩스</p>
-                <span>02-2279-1721</span>
+                <span>02-2279-1727</span>
               </InformationItem>
               <InformationItem>
                 <p>이메일</p>
