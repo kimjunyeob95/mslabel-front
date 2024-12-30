@@ -74,8 +74,11 @@ export const useHeaderHooks = () => {
   };
 
   useEffect(() => {
-    handleLogin(getNavigateInformation)
-    
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("token") === null)     handleLogin(getNavigateInformation)
+    }
+
+    handleLogin(getNavigateInformation);
   }, []);
 
   return {
