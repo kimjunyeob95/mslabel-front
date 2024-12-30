@@ -9,7 +9,6 @@ export const useHeaderHooks = () => {
   const [headerItem, setHeaderItem] = useState<HeaderItem[]>();
   const [visibleHeaderItem, setVisibleHeaderItem] =
     useState<string>("게시판관리");
-  const token = localStorage.getItem("token")
 
   const handelOnClickHeaderItem = (headerContents: string) => {
     setVisibleHeaderItem(headerContents);
