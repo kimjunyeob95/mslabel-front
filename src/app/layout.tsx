@@ -29,30 +29,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const handleLogin = async () => {
-    try {
-      const response = await instance.post("token/create", {
-        user_id: "tester123",
-        password: "1234",
-      });
-
-      if (response) {
-        localStorage.setItem("token", `Bearer ${response.data.token}`);
-      }
-    } catch (error) {
-      localStorage.removeItem("token");
-      console.log(error, "login error");
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (localStorage.getItem("token") === null) handleLogin();
-    }
-
-    handleLogin();
-  }, []);
-
   return (
     <html lang="en">
       <body>

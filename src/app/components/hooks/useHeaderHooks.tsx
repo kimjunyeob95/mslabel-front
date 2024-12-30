@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { HeaderItem } from "@/app/models/HeaderType";
 import { instance } from "@/app/util/instance";
+import { handleLogin } from "@/app/(main)/hooks/handleLogin";
 
 export const useHeaderHooks = () => {
   const router = useRouter();
   const [headerItem, setHeaderItem] = useState<HeaderItem[]>();
   const [visibleHeaderItem, setVisibleHeaderItem] =
     useState<string>("게시판관리");
+  const token = localStorage.getItem("token")
 
   const handelOnClickHeaderItem = (headerContents: string) => {
     setVisibleHeaderItem(headerContents);
@@ -72,7 +74,8 @@ export const useHeaderHooks = () => {
   };
 
   useEffect(() => {
-    getNavigateInformation();
+    handleLogin(getNavigateInformation)
+    
   }, []);
 
   return {

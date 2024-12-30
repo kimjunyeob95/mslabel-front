@@ -1,4 +1,5 @@
 "use client";
+// import { useEffect } from "react";
 import styled from "styled-components";
 import BrandLabelContainer from "./(main)/BrandLabelContainer";
 import DescrptionContainer from "./(main)/DescriptionContainer";
@@ -7,7 +8,6 @@ import IntroduceContainer from "./(main)/IntroduceContainer";
 import Image from "next/image";
 import {
   IMAGE_BANNER_THUMBNAIL,
-  IMAGE_BRANDLABEL_THUMBNAIL,
 } from "./assets/image";
 
 const AppLayout = styled.div`
@@ -46,3 +46,7 @@ export default function Home() {
     </AppLayout>
   );
 }
+function useEffect(arg0: () => void, arg1: undefined[]) {
+  throw new Error("Function not implemented.");
+}
+
